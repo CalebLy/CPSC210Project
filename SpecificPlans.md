@@ -1,0 +1,53 @@
+# Storyline/Game features
+ - The creature is observing the De Laceys
+ - The creature stumbles across a "Witch" NPC
+ - The witch reads the thoughts of the creature and determines that he has two conflicting desires
+    - 1) He desires for companionship, being loved, being in a family such as the De Laceys
+    - 2) He resents Victor Frankenstein, and wants him to understand how he has been affected by him
+ - The witch promises that she can grant only One of these desires, if the creature brings her the ingredients (Bat Wings)
+ - The witch indicates that she's unsure how many bat wings she may need, so she recommends to get 10 or more (arbitrary amount)
+ - The witch asks: Do you accept?
+    - The creature may say no --> the witch disappears and the creature continues to observe the De Laceys
+    - The creature may say yes --> the creature is teleported to a pitch black cave where pairs of eyes represent bats
+        - The cave will constantly spawn bats in random spots, with a set timer for respawning, and with a maximum occupency
+        - The creature must kill the bats
+        - The creature can open its inventory at any point to see how many bat wings he has harvested
+        - The creature can choose to "use" any amount of bat wings (up to a certain maximum)
+        - Using bat wings lowers the set timer for respawning, and increases the maximum occupency
+        - Once the creature has atleast 5 bat wings, the creature is able to leave the cave at any point
+            - The creature may not leave the cave with less than 5 bat wings
+        - When the creature obtains 2 bat wings, CUTSCENE - the creature ponders on the implications of the first wish
+            - 1) He contemplates how nice it would be to be a part of the De Laceys family
+            - 2) To show his good nature: he reflects and thinks about how unfair it would be to subject anyone of the
+            -    De Lacey's family to being in his horrible position. Especially when they are innocent.
+            -    He realizes that he would be just as guilty as Victor.
+        - When the creature obtains 5 bat wings, CUTSCENE - the creature ponders on the implications of the second wish
+            - 1) He contemplates how nice it wuold be to finally have a human apperance. One that would be accepted
+            -    by societal standards. He would finally be treated as a human.
+            - 2) He thinks about how this would be a way to achieve the same result as if he were to pick the first wish,
+            -    however, he wouldn't feel any of the guilt from subjecting Frankenstein to being in his body as he would
+            -    with switching with the De Laceys.
+    - Once the creature finishes the harvesting of bat wings, the witch confronts him again
+    - The witch congratulates the creature on finding X bat wings and restates his two choices
+        - If first wish:
+            - 1) The creature wakes up without sight. He is in the body of the father of the De Lacey's.
+            -    He reflects on how weak the human body is, and how from creation, he was able to be born strong, despite
+            -    his appearance. The frame is a black screen with only speech boxes showing.
+            - 2) The creature hears the old man De Lacey scream in excitement from being able to see, before screaming
+            -    in horror from seeing his appearance in the water.
+            - 3) The creature realizes the impact of his actions on an innocent and kind human, and feels immense guilt.
+            - 4) The creature now self proclaims himself as a real monster.
+        - If second wish:
+            - 1) The creature wakes up in excitement. The frame is just the face of Frankenstein.
+            - 2) The creature slowly processes the thoughts and feelings of Frankenstein. He realizes all the 
+            -    guilt that Frankenstein felt for creating him.
+            - 3) The creature pledges to use his knowledge to create life that wouldn't be judged for its appearance
+            -    He promises to care for it to prove that Frankenstein had a choice and could've nurtured him properly, but chose not to.
+            - 4) The creature eventually creates human passing life, but realizes that the new creature now suffers from 
+            -    a lack of functionality - no strength, prone to disease, etc.
+            - 5) The creature realizes that there are limits to scientific improvement, and the dangers of the creation of life.
+            -    The body of Victor Frankenstein has now made the same mistake of creating life twice.
+            
+    
+
+
