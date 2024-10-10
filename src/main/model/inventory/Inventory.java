@@ -2,8 +2,20 @@ package model.inventory;
 
 import model.items.Batwings;
 
-import model.GameObject;
+public class Inventory{
+    private Batwings batwings;
 
-public class Inventory extends GameObject{
     
+    // Effects: intanstializes an inventory
+    public Inventory(){
+        // stub
+    }
+
+    // Effects: Displays inventory
+    public void displayInventory() {
+        // stub
+    }
+
+
+
 }
