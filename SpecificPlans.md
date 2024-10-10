@@ -14,14 +14,14 @@
         - The creature can open its inventory at any point to see how many bat wings he has harvested
         - The creature can choose to "use" any amount of bat wings (up to a certain maximum)
         - Using bat wings lowers the set timer for respawning, and increases the maximum occupency
-        - Once the creature has atleast 5 bat wings, the creature is able to leave the cave at any point
-            - The creature may not leave the cave with less than 5 bat wings
-        - When the creature obtains 2 bat wings, CUTSCENE - the creature ponders on the implications of the first wish
+        - Once the creature has atleast 10 bat wings, the creature is able to leave the cave at any point
+            - The creature may not leave the cave with less than 10 bat wings
+        - When the creature obtains 5 bat wings, CUTSCENE - the creature ponders on the implications of the first wish
             - 1) He contemplates how nice it would be to be a part of the De Laceys family
             - 2) To show his good nature: he reflects and thinks about how unfair it would be to subject anyone of the
             -    De Lacey's family to being in his horrible position. Especially when they are innocent.
             -    He realizes that he would be just as guilty as Victor.
-        - When the creature obtains 5 bat wings, CUTSCENE - the creature ponders on the implications of the second wish
+        - When the creature obtains 10 bat wings, CUTSCENE - the creature ponders on the implications of the second wish
             - 1) He contemplates how nice it wuold be to finally have a human apperance. One that would be accepted
             -    by societal standards. He would finally be treated as a human.
             - 2) He thinks about how this would be a way to achieve the same result as if he were to pick the first wish,

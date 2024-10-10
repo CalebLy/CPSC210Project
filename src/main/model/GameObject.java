@@ -1,7 +1,7 @@
 package model;
 
 // Base class for all objects: Characters, Items, Rooms
-public abstract class GameObject {
+public class GameObject {
 
     // Fields
     private String name; // Name of object
@@ -23,11 +23,6 @@ public abstract class GameObject {
         // stub
     }
 
-    // Requires: all coordinates must be >= 0
-    public boolean isWithinBounds(int minX, int maxX, int minY, int maxY) {
-        // stub
-        return true;
-    }
 
 
 
