@@ -12,7 +12,8 @@ creative adaptation of *Frankenstein*
 
 ## User Stories
     - I want the user to be able to kill bats which puts a batwing in their inventory
-    - I want the inventory to display all items and to allow the user to drop, use, and read a short description of the items
+    - I want the user to be able to open their inventory which displays the batwings.
+    - I want the user to to be able to drop, use, and read a short description of the batwings
     - I want the user to be able to freely move around
     - I want the user to be able to engage in set dialogue with created NPCs
     - I want the user to be able to save multiple files where they may or may not choose different story choices.
