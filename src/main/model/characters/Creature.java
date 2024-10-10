@@ -1,8 +1,8 @@
 package model.characters;
 
 import model.GameObject;
-import model.inventory.Inventory;
 import model.items.Batwings;
+import ui.inventory.Inventory;
 
 // This class represents the user's initial character.
 // This class will contain all the methods needed to give the user functionality
@@ -46,6 +46,10 @@ public class Creature extends GameObject {
     public boolean move(String direction, int distance) {
         // stub
         return false;
+    }
+
+    public void removeObject() {
+        this.setIsActive(false);
     }
 
 

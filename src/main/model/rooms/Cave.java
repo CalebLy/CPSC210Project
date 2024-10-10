@@ -12,8 +12,8 @@ public class Cave extends GameObject{
         this.height = height;
     }
 
-    // Effects: Checks to see if GameObject's (xNow, yNow) are within the bounds of the cave
-    public boolean isWithinBounds(int xNow, int yNow) {
+    // Effects: Checks to see if GameObject's (xNew, yNew) are within the bounds of the cave
+    public boolean isWithinBounds(int xNew, int yNew) {
         // stub
         return true;
     }
@@ -26,5 +26,10 @@ public class Cave extends GameObject{
 
     public int getHeight() {
         return height;
+    }
+
+    // Effects: Removes cave when user leaves.
+    public void removeObject() {
+        this.setIsActive(false);
     }
 }

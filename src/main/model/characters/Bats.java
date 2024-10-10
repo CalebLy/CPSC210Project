@@ -18,4 +18,11 @@ public class Bats extends GameObject{
         // stub
     }
 
+    // Requires: total Bats > 0
+    // Modifies: this
+    // Effects: Removes a Bat after it is killed by the user. Adds the batwing to user's inventory.
+    public void removeObject() {
+        // stub
+    }
+
 }

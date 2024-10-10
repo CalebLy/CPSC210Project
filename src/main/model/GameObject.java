@@ -1,7 +1,7 @@
 package model;
 
 // Base class for all objects: Characters, Items, Rooms
-public class GameObject {
+public abstract class GameObject {
 
     // Fields
     private String name; // Name of object
@@ -15,22 +15,10 @@ public class GameObject {
         // stub
     }
 
-
-    // Requires: coordinate (x,y) must be within the bounds
-    // Modifies: this
-    // Effects: Sets the position of this(object) to (x,y)
-    public void setPosition(int x, int y) {
-        // stub
-    }
-
-
-
-
     // Modifies: this
     // Effects: Visually removes a Game Object
-    public void removeObject() {
-        this.isActive = false;
-    }
+    public abstract void removeObject();
+
 
     // Getter Methods
     public String getName() { 
@@ -47,6 +35,16 @@ public class GameObject {
 
     public boolean getIsActive() {
         return isActive;
+    }
+
+    // Setter methods
+    public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setIsActive(boolean activity) {
+        this.isActive = activity;
     }
 
 }

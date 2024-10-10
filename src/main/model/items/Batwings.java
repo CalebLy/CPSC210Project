@@ -27,11 +27,12 @@ public class Batwings extends GameObject{
         return false;
     }
 
+
     public void addBatwing() {
         this.amount++;
     }
 
-    public void dropBatwing() {
+    public void removeObject() {
         this.amount--;
     }
 
