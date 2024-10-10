@@ -1,9 +1,10 @@
 package model.characters;
 
-import model.characters.Players;
+import model.GameObject;
 
 
-
-public class VictorFrankenstein extends Players {
+// CLASS NOT NEEDED FOR PHASE 1
+// Class represents the user if he chooses to switch bodies with Victor Frankenstein 
+public class VictorFrankenstein extends GameObject {
     
 }

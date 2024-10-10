@@ -1,9 +1,11 @@
 package model.characters;
 
-import model.characters.Players;
+import model.GameObject;
 
 
 
-public class DeLaceyDad extends Players {
+// CLASS NOT NEEDED FOR PHASE 1
+// Class represents the user if he chooses to switch bodies with the De Lacey family
+public class DeLaceyDad extends GameObject {
     
 }

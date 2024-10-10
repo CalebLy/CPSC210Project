@@ -1,5 +1,7 @@
 package model.rooms;
 
-public class Cave {
+import model.GameObject;
+
+public class Cave extends GameObject{
     
 }

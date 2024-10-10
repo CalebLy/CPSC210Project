@@ -1,9 +1,11 @@
 package model.characters;
 
-import model.characters.Players;
+import model.GameObject;
 import model.inventory.Inventory;
 import model.items.Batwings;
 
-public class Creature extends Players {
+// This class represents the user's initial character.
+// This class will contain all the methods needed to give the user functionality
+public class Creature extends GameObject {
     
 }
