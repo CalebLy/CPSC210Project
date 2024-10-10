@@ -9,11 +9,12 @@ public abstract class GameObject {
     private int y; // y coordinate of object
     private boolean isActive; // Is object on the screen
     
-
+    // Requires: coordinate (x,y) must be within the bounds
     // Effects: Creates a Game Object with "name", set at coordinates (x,y), and set to not active.
     public GameObject(String name, int x, int y) {
         // stub
     }
+
 
     // Requires: coordinate (x,y) must be within the bounds
     // Modifies: this
@@ -29,7 +30,13 @@ public abstract class GameObject {
     }
 
 
-    
+
+    // Modifies: this
+    // Effects: Visually removes a Game Object
+    public void removeObject() {
+        this.isActive = false;
+    }
+
     // Getter Methods
     public String getName() { 
         return name;
