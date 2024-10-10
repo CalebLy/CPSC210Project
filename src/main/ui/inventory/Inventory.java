@@ -1,4 +1,4 @@
-package model.inventory;
+package ui.inventory;
 
 import model.items.Batwings;
 
@@ -11,7 +11,8 @@ public class Inventory{
         // stub
     }
 
-    // Effects: Displays inventory
+    // Effects: Displays inventory. Gives user option to view amount of Batwings,
+    //          use Batwings, drop Batwings, or view description of Batwings.
     public void displayInventory() {
         // stub
     }
