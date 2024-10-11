@@ -49,7 +49,7 @@ public class BatwingsTest {
         assertEquals(4500, caveTest.getBatSpawnRate());
 
 
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             creatureTest.getInventory().getBatwings().addBatwing();
             creatureTest.getInventory().getBatwings().useBatwing(creatureTest, caveTest);
         }
