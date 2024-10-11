@@ -21,7 +21,7 @@ public class Inventory {
     @SuppressWarnings("methodlength")
     public void displayInventory(Creature creature, Cave cave) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Type 'a' to view amount of Batwings" 
+        System.out.println("\nType 'a' to view amount of Batwings" 
                            + "\nType 'u' to use a Batwing" 
                            + "\nType 'd' to drop a Batwing" 
                            + "\nType 'v' to view description of Batwings" 
@@ -32,15 +32,23 @@ public class Inventory {
                 System.out.println("Batwings: " + this.getBatwings().getAmount());
                 break;
             case "u":
-                this.getBatwings().useBatwing(creature, cave);
-                System.out.println("A Batwing has been used! Batwings left: " + this.getBatwings().getAmount());
-                System.out.println("AttackCooldownTime is now: " + creature.getAttackCooldownTime()/1000 + " seconds" 
-                                + "\nMaxBats is now: " + cave.getMaxBats() 
-                                + "\nBatSpawnRate is now: " + cave.getBatSpawnRate()); 
+                if (this.getBatwings().getAmount() > 0) {
+                    this.getBatwings().useBatwing(creature, cave);
+                    System.out.println("\nA Batwing has been used! Batwings left: " + this.getBatwings().getAmount());
+                    System.out.println("AttackCooldownTime is now: " + creature.getAttackCooldownTime() + " miliseconds" 
+                                    + "\nMaxBats is now: " + cave.getMaxBats() 
+                                    + "\nBatSpawnRate is now: " + cave.getBatSpawnRate() + " miliseconds"); 
+                } else {
+                    System.out.println("\nOh no! You do not have any Batwings available to use!");
+                }
                 break;
             case "d":
-                this.getBatwings().removeObject();
-                System.out.println("A Batwing has been dropped! Batwings left: " + this.getBatwings().getAmount());
+                if (this.getBatwings().getAmount() > 0) {
+                    this.getBatwings().removeObject();
+                    System.out.println("\nA Batwing has been dropped! Batwings left: " + this.getBatwings().getAmount());
+                } else {
+                    System.out.println("\nOh no! You do not have any Batwings available to drop!");
+                }
                 break;
             case "v":
                 System.out.println("" + this.getBatwings().getDescription());
@@ -49,7 +57,6 @@ public class Inventory {
                 inventoryOpen = false;
                 break;
         }
-        scanner.close();
     }
 
 
@@ -60,5 +67,10 @@ public class Inventory {
 
     public boolean getInventoryOpen() {
         return inventoryOpen;
+    }
+
+    // Setter methods
+    public void setInventoryOpen() {
+        inventoryOpen = true;
     }
 }
