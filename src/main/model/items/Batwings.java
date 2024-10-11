@@ -20,7 +20,8 @@ public class Batwings extends GameObject{
 
     // Modifies: this
     // Effects: If there exists a Batwing in the user's inventory spawn rate of bats will increase, 
-    //          maximum occupancy of bats will increase, and it will return true.
+    //          maximum occupancy of bats will increase, attackCooldown will decrease
+    //          and number of Batwings will decrease by one, then it will return true.
     //          If there doesn't exist a Batwing, it will return false.
     public boolean useBatwing() {
         // stub

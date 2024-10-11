@@ -28,13 +28,13 @@ public class Creature extends GameObject {
     // Modifies: this
     // Effects: Attacks the bat, if canAttack is true, and removeObject()'s' that specific bat 
     //          Has a cooldown that varies with batwing usage. Initially = 4 seconds.
-    public boolean attack(Bats bats) {
+    public boolean attack(Bats batIndex) {
         // stub
         return false;
     }
 
     // Effects: Checks if isInRange and attackOffCooldown = true
-    public boolean canAttack(Bats bats) {
+    public boolean canAttack(Bats batIndex) {
         // stub
         return false;
     }
@@ -88,9 +88,6 @@ public class Creature extends GameObject {
     }
 
     
-    public void removeObject() {
-        this.setIsActive(false);
-    }
     
 
 

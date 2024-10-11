@@ -1,28 +1,20 @@
 package model.characters;
 
+import java.util.ArrayList;
+
 import model.GameObject;
 
 public class Bats extends GameObject{
 
+
+    protected int maxBats;
+    protected double batSpawnRate;
     // Requires: coordinate (x,y) must be within the bounds
     // Effects: Constructs a character with a static name of "Bat", at coordinates (x,y).
+    //          Sets a maxBats of 5, and a batSpawnRate every 5 seconds
     public Bats(int x, int y){
         super("Bat", x, y);
     }
 
-
-    // Requires: maxBats, batSpawnRate >= 0
-    // Effects: Spawns Bat characters in random (x,y) coordinates in the room.
-    //          Spawns up to maxBats bats, every batSpawnRate seconds.
-    public void spawnBats(int maxBats, int batSpawnRate) {
-        // stub
-    }
-
-    // Requires: total Bats > 0
-    // Modifies: this
-    // Effects: Removes a Bat after it is killed by the user. Adds the batwing to user's inventory.
-    public void removeObject() {
-        // stub
-    }
 
 }

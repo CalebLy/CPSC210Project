@@ -12,12 +12,12 @@ public abstract class GameObject {
     // Requires: coordinate (x,y) must be within the bounds
     // Effects: Creates a Game Object with "name", set at coordinates (x,y), and set to not active.
     public GameObject(String name, int x, int y) {
-        // stub
+        this.name = name;
+        this.x = x;
+        this.y = y;
     }
 
-    // Modifies: this
-    // Effects: Visually removes a Game Object
-    public abstract void removeObject();
+    public GameObject(){}
 
 
     // Getter Methods
