@@ -18,9 +18,11 @@ public class Batwings extends GameObject{
     }
 
 
+    // Requires: A maximum of 5 Batwings can be used -> maximum occupancy <= 10; batSpawnRate <= 2500ms;
+    //           attackCooldownTime <= 1500ms
     // Modifies: this
-    // Effects: If there exists a Batwing in the user's inventory spawn rate of bats will increase, 
-    //          maximum occupancy of bats will increase, attackCooldown will decrease
+    // Effects: If there exists a Batwing in the user's inventory spawn rate of bats will increase by 500ms, 
+    //          maximum occupancy of bats will increase by 1, attackCooldown will decrease by 0.5
     //          and number of Batwings will decrease by one, then it will return true.
     //          If there doesn't exist a Batwing, it will return false.
     public boolean useBatwing() {
