@@ -118,44 +118,49 @@ public class CreatureTest {
 
         assertTrue(creatureTest.attack(batTest));
         assertFalse(creatureTest.canAttack(batTest2));
+
         try {
-            Thread.sleep(4100);
+            Thread.sleep(creatureTest.getAttackCooldownTime()+300);
+            assertTrue(creatureTest.canAttack(batTest2));
+            assertTrue(creatureTest.attack(batTest2));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
-        assertTrue(creatureTest.canAttack(batTest2));
-        assertTrue(creatureTest.attack(batTest2));
+
 
         creatureTest.setPosition(8,8);
         creatureTest.setAttackCooldownTime(1000);
         assertFalse(creatureTest.canAttack(batTest3));
+
         try {
-            Thread.sleep(2100);
+            Thread.sleep(creatureTest.getAttackCooldownTime()-700);
+            assertFalse(creatureTest.canAttack(batTest3));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
-        assertFalse(creatureTest.canAttack(batTest3));
+        
         try {
             Thread.sleep(1000);
+            assertTrue(creatureTest.canAttack(batTest3));
+            assertTrue(creatureTest.attack(batTest3));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
-        assertTrue(creatureTest.canAttack(batTest3));
-        assertTrue(creatureTest.attack(batTest3));
+    
 
         creatureTest.setAttackCooldownTime(-2000);
         assertFalse(creatureTest.canAttack(batTest4));
         try {
-            Thread.sleep(4100);
+            Thread.sleep(creatureTest.getAttackCooldownTime()-700);
+            assertFalse(creatureTest.canAttack(batTest4));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
-        assertFalse(creatureTest.canAttack(batTest4));
         try {
             Thread.sleep(1000);
+            assertTrue(creatureTest.attack(batTest4));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
-        assertTrue(creatureTest.attack(batTest4));
     }
 }

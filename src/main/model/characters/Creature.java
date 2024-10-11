@@ -12,7 +12,7 @@ import java.util.TimerTask;
 public class Creature extends GameObject {
 
     protected Inventory inventory;
-    protected int attackCooldownTime;
+    protected long attackCooldownTime;
     protected boolean attackCooldown;
     
     // Requires: coordinate (x,y) must be within the bounds
@@ -20,14 +20,14 @@ public class Creature extends GameObject {
     //          at coordinate (x,y).
     public Creature(int x, int y) {
         super("????", x, y);
-        attackCooldownTime = 4; 
+        attackCooldownTime = 4000; 
         attackCooldown = true;
         inventory = new Inventory();
     }
 
     // Modifies: this
     // Effects: Attacks the bat, if canAttack is true, and removeObject()'s' that specific bat 
-    //          Has a cooldown that varies with batwing usage. Initially = 4 seconds.
+    //          Has a cooldown that varies with batwing usage. Initially = 4000ms.
     public boolean attack(Bats batIndex) {
         // stub
         return false;
@@ -65,7 +65,7 @@ public class Creature extends GameObject {
 
 
     // Getter methods
-    public int getAttackCooldownTime() {
+    public long getAttackCooldownTime() {
         return this.attackCooldownTime;
     }
 
@@ -79,7 +79,7 @@ public class Creature extends GameObject {
 
     // Setter methods
     // Reduces attackCooldownTime by timeReduced miliseconds
-    public int setAttackCooldownTime(int timeReduced) {
+    public long setAttackCooldownTime(long timeReduced) {
         return this.attackCooldownTime -= timeReduced;
     }
 
