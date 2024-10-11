@@ -98,6 +98,7 @@ public class GameLoop {
         scanner.close();
         creature.setAbilityToAttack(false);
         cave.stopSpawningBats();
+        System.out.println("Game has ended!");
         gameIsRunning = false;
     }
 

@@ -29,7 +29,7 @@ public class Inventory {
         String userChoice = scanner.nextLine();
         switch (userChoice.toLowerCase()) {
             case "a":
-                System.out.println("Batwings: " + this.getBatwings().getAmount());
+                System.out.println("\nBatwings: " + this.getBatwings().getAmount());
                 break;
             case "u":
                 if (this.getBatwings().getAmount() > 0) {
