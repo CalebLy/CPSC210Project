@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import model.characters.Bats;
 import model.characters.Creature;
+import model.rooms.Cave;
 
 
 
@@ -20,6 +21,7 @@ public class CreatureTest {
     private Bats batTest2;
     private Bats batTest3;
     private Bats batTest4;
+    private Cave caveTest;
 
 
     @BeforeEach
@@ -29,6 +31,11 @@ public class CreatureTest {
         batTest2 = new Bats(0,0);
         batTest3 = new Bats(0,0);
         batTest4 = new Bats (0,0);
+        caveTest = new Cave(20,20);
+        caveTest.getBats().add(batTest);
+        caveTest.getBats().add(batTest2);
+        caveTest.getBats().add(batTest3);
+        caveTest.getBats().add(batTest4);
 
         
     }
@@ -38,127 +45,144 @@ public class CreatureTest {
         assertEquals("????", creatureTest.getName());
         assertEquals(0, creatureTest.getX());
         assertEquals(0, creatureTest.getY());
-        assertEquals(4, creatureTest.getAttackCooldownTime());
+        assertEquals(4000, creatureTest.getAttackCooldownTime());
         assertTrue(creatureTest.getAttackCooldown());
         assertEquals(0, creatureTest.getInventory().getBatwings().getAmount());
     }
 
     @Test 
     void testMove() {
-        assertEquals(creatureTest.getY(), creatureTest.move("up", 5));
-        assertEquals(creatureTest.getX(), creatureTest.move("left", 5));
-        assertEquals(creatureTest.getY(), creatureTest.move("down",5));
-        assertEquals(creatureTest.getX(), creatureTest.move("right", 5));
-        assertEquals(0, creatureTest.getX());
+        creatureTest.move("Up", 5, caveTest);
+        assertEquals(5, creatureTest.getY());
+
+        creatureTest.move("right", 5, caveTest);
+        assertEquals(5, creatureTest.getX());
+
+        creatureTest.move("down",5, caveTest);
         assertEquals(0, creatureTest.getY());
+
+        creatureTest.move("left", 5, caveTest);
+        assertEquals(0, creatureTest.getX());
+
+        assertFalse(creatureTest.move("left", 5, caveTest));
+        assertEquals(0, creatureTest.getX());
+
+        assertFalse(creatureTest.move("down", 5, caveTest));
+        assertEquals(0, creatureTest.getY());
+
+            assertFalse(creatureTest.move("777", 5, caveTest));
+
     }
 
     @Test
     void testIsInRange() {
         batTest.setPosition(5,5);
         creatureTest.setPosition(4,4);
-        assertTrue(creatureTest.isInRange(batTest));
+        assertEquals(0, creatureTest.isInRange(caveTest));
         creatureTest.setPosition(4,3);
-        assertFalse(creatureTest.isInRange(batTest));
+        assertEquals(-1, creatureTest.isInRange(caveTest));
         batTest.setPosition(4,3);
-        assertTrue(creatureTest.isInRange(batTest));
-
-        batTest.setIsActive(false);
-        assertFalse(creatureTest.isInRange(batTest));
+        assertEquals(0, creatureTest.isInRange(caveTest));
+        batTest2.setPosition(5, 4);
+        assertEquals(0, creatureTest.isInRange(caveTest));
+        batTest.setPosition(1, 01);
+        assertEquals(1, creatureTest.isInRange(caveTest));
     }
 
     @Test
     void testCanAttack() {
         batTest.setPosition(5,5);
         creatureTest.setAttackCooldown(false);
-        assertFalse(creatureTest.canAttack(batTest)); 
+        assertFalse(creatureTest.canAttack(caveTest)); 
 
         creatureTest.setAttackCooldown(true);
-        assertFalse(creatureTest.canAttack(batTest));
+        assertTrue(creatureTest.canAttack(caveTest));
 
         creatureTest.setPosition(5,4);
-        assertTrue(creatureTest.canAttack(batTest));
+        assertTrue(creatureTest.canAttack(caveTest));
 
-        batTest2.setPosition(6,6 );
-        assertFalse(creatureTest.canAttack(batTest2));
+        batTest.setPosition(6, 6);
+        batTest2.setPosition(6,5 );
+        assertTrue(creatureTest.canAttack(caveTest));
 
-        creatureTest.setPosition(5,6);
-        assertTrue(creatureTest.canAttack(batTest2));
+        creatureTest.setPosition(7,7);
+        assertTrue(creatureTest.canAttack(caveTest));
 
-        batTest.setIsActive(false);
-        assertFalse(creatureTest.canAttack(batTest));
+        caveTest.harvestBat(creatureTest, 0);
+        assertFalse(creatureTest.canAttack(caveTest));
     }
 
     @Test
     void testAttack() {
-        batTest.setPosition(5,5);
-        batTest2.setPosition(5,5);
         creatureTest.setPosition(5,4);
-        assertTrue(creatureTest.attack(batTest));
-        assertFalse(batTest.getIsActive());
-        assertFalse(creatureTest.canAttack(batTest));
+        caveTest.getBats().get(0).setPosition(5,5);
+        caveTest.getBats().get(1).setPosition(5,5);
+        assertTrue(creatureTest.attack(caveTest));
+        assertFalse(creatureTest.attack(caveTest));
 
-        assertFalse(creatureTest.attack(batTest2));
-        try {
-            Thread.sleep(4100);
-        } catch (InterruptedException e) {
-            System.err.println("Sleep interrupted" + e.getMessage());
-        }
-        assertTrue(creatureTest.attack(batTest2));
-        assertFalse(batTest2.getIsActive());
+        creatureTest.setAttackCooldown(true);
+
+        assertTrue(creatureTest.attack(caveTest));
+        creatureTest.setAttackCooldown(true);
+        assertFalse(creatureTest.attack(caveTest));
     }
+  
 
     @Test
     void testStartAttackCooldown() {
-        batTest.setPosition(5,5);
-        batTest2.setPosition(5,5);
-        batTest3.setPosition(8,8);
-        batTest4.setPosition(8,8);
+    
+        caveTest.getBats().get(0).setPosition(5,5);
+        caveTest.getBats().get(1).setPosition(5,5);
+        caveTest.getBats().get(2).setPosition(8,8);
+        caveTest.getBats().get(3).setPosition(8,8);
         creatureTest.setPosition(5,5);
 
-        assertTrue(creatureTest.attack(batTest));
-        assertFalse(creatureTest.canAttack(batTest2));
+        assertTrue(creatureTest.attack(caveTest));
+        assertFalse(creatureTest.canAttack(caveTest));
 
+        creatureTest.startAttackCooldown(creatureTest.getAttackCooldownTime(), caveTest);   
         try {
-            Thread.sleep(creatureTest.getAttackCooldownTime()+300);
-            assertTrue(creatureTest.canAttack(batTest2));
-            assertTrue(creatureTest.attack(batTest2));
+            Thread.sleep(creatureTest.getAttackCooldownTime()+600);
+            assertTrue(creatureTest.canAttack(caveTest));
+            assertTrue(creatureTest.attack(caveTest));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
 
 
         creatureTest.setPosition(8,8);
+        creatureTest.setAbilityToAttack(false);
         creatureTest.setAttackCooldownTime(1000);
-        assertFalse(creatureTest.canAttack(batTest3));
+        creatureTest.startAttackCooldown(creatureTest.getAttackCooldownTime(), caveTest);  
 
         try {
             Thread.sleep(creatureTest.getAttackCooldownTime()-700);
-            assertFalse(creatureTest.canAttack(batTest3));
+            assertFalse(creatureTest.attack(caveTest));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
         
         try {
-            Thread.sleep(1000);
-            assertTrue(creatureTest.canAttack(batTest3));
-            assertTrue(creatureTest.attack(batTest3));
+            Thread.sleep(1300);
+            assertTrue(creatureTest.attack(caveTest));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
     
-
-        creatureTest.setAttackCooldownTime(-2000);
-        assertFalse(creatureTest.canAttack(batTest4));
+        creatureTest.setAbilityToAttack(false);
+        creatureTest.setAttackCooldownTime(-1000);
+        creatureTest.startAttackCooldown(creatureTest.getAttackCooldownTime(), caveTest);  
+        
         try {
-            Thread.sleep(creatureTest.getAttackCooldownTime()-700);
-            assertFalse(creatureTest.canAttack(batTest4));
+            Thread.sleep(creatureTest.getAttackCooldownTime() - 2000);
+            assertFalse(creatureTest.getAttackCooldown());
+            assertFalse(creatureTest.attack(caveTest));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
         try {
-            Thread.sleep(1000);
-            assertTrue(creatureTest.attack(batTest4));
+            Thread.sleep(2500);
+            assertTrue(creatureTest.attack(caveTest));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
         }
