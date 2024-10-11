@@ -78,8 +78,9 @@ public class Creature extends GameObject {
     }
 
     // Setter methods
-    public int setAttackCooldownTime(int timeSubtracted) {
-        return this.attackCooldownTime -= timeSubtracted;
+    // Reduces attackCooldownTime by timeReduced miliseconds
+    public int setAttackCooldownTime(int timeReduced) {
+        return this.attackCooldownTime -= timeReduced;
     }
 
     public void setAttackCooldown(boolean cooldownUp) {
