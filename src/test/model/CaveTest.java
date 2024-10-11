@@ -5,12 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
 
 import model.characters.Creature;
-import model.items.Batwings;
+
 import model.rooms.Cave;
 
 
@@ -21,14 +19,13 @@ public class CaveTest {
     
     private Creature creatureTest;
     private Cave caveTest;
-    private Batwings batwingTest;
+    
 
 
     @BeforeEach
     void runBefore() {
         creatureTest = new Creature(0, 0);
         caveTest = new Cave(20,20);
-        batwingTest = new Batwings();
     }
 
     @Test

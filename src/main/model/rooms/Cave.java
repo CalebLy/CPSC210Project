@@ -30,7 +30,7 @@ public class Cave extends GameObject{
     // Effects: Checks position of GameObject
     //          Returns true if the new position is within the bounds. False otherwise.
     public boolean isWithinBounds(int x, int y) {
-        if (width < x || height < y) {
+        if (width < x || height < y || x < 0 || y < 0) {
             return false;
         } else {
             return true;
@@ -46,13 +46,13 @@ public class Cave extends GameObject{
         new Thread(() -> {
             while (isSpawningBats) { 
 
-                while (bats.size() == maxBats) {
-                    try {
-                        Thread.sleep(100); 
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt(); 
-                    }
-                }
+                // while (bats.size() == maxBats) {
+                //     try {
+                //         Thread.sleep(100); 
+                //     } catch (InterruptedException e) {
+                //         Thread.currentThread().interrupt(); 
+                //     }
+                // }
 
                 try {
                     Thread.sleep(batSpawnRate);

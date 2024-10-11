@@ -5,8 +5,8 @@ public abstract class GameObject {
 
     // Fields
     private String name; // Name of object
-    private int x; // x coordinate of object
-    private int y; // y coordinate of object
+    protected int x; // x coordinate of object
+    protected int y; // y coordinate of object
     private boolean isActive; // Is object on the screen
     
     // Requires: coordinate (x,y) must be within the bounds
@@ -15,9 +15,12 @@ public abstract class GameObject {
         this.name = name;
         this.x = x;
         this.y = y;
+        this.setIsActive(true);
     }
 
-    public GameObject(){}
+    public GameObject(){
+        this.setIsActive(true);
+    }
 
 
     // Getter Methods
