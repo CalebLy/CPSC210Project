@@ -2,15 +2,13 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.characters.Bats;
 import model.characters.Creature;
-import model.items.Batwings;
-import model.rooms.Cave;
+
 
 
 
@@ -22,8 +20,6 @@ public class CreatureTest {
     private Bats batTest2;
     private Bats batTest3;
     private Bats batTest4;
-    private Cave caveTest;
-    private Batwings batwingTest;
 
 
     @BeforeEach
@@ -33,8 +29,6 @@ public class CreatureTest {
         batTest2 = new Bats(0,0);
         batTest3 = new Bats(0,0);
         batTest4 = new Bats (0,0);
-        caveTest = new Cave(0,0, 20,20);
-        batwingTest = new Batwings();
 
         
     }
@@ -42,6 +36,8 @@ public class CreatureTest {
     @Test 
     void testCreatureConstructor() {
         assertEquals("????", creatureTest.getName());
+        assertEquals(0, creatureTest.getX());
+        assertEquals(0, creatureTest.getY());
         assertEquals(4, creatureTest.getAttackCooldownTime());
         assertTrue(creatureTest.getAttackCooldown());
         assertEquals(0, creatureTest.getInventory().getBatwings().getAmount());
