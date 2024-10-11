@@ -1,5 +1,7 @@
 package model.items;
 import model.GameObject;
+import model.characters.Creature;
+import model.rooms.Cave;
 
 public class Batwings extends GameObject{
     
@@ -22,14 +24,20 @@ public class Batwings extends GameObject{
     //           attackCooldownTime <= 1500ms
     // Modifies: this
     // Effects: If there exists a Batwing in the user's inventory spawn rate of bats will increase by 500ms, 
-    //          maximum occupancy of bats will increase by 1, attackCooldown will decrease by 0.5
+    //          maximum occupancy of bats will increase by 1, attackCooldown will decrease by 500ms
     //          and number of Batwings will decrease by one, then it will return true.
     //          If there doesn't exist a Batwing, it will return false.
-    public boolean useBatwing() {
-        // stub
-        return false;
+    public boolean useBatwing(Creature creature, Cave cave) {
+        if(amount > 0 && cave.getMaxBats() < 10) {
+            creature.setAttackCooldownTime(500);
+            cave.stopSpawningBats();
+            cave.spawnBats(cave.getMaxBats()+1, cave.getBatSpawnRate()-500);
+            this.removeObject();
+            return true;
+        } else {
+            return false;
+        }
     }
-
 
     public void addBatwing() {
         this.amount++;

@@ -37,15 +37,21 @@ public class BatwingsTest {
     void testUseBatwing() {
         creatureTest.getInventory().getBatwings().addBatwing(); 
         assertEquals(1, creatureTest.getInventory().getBatwings().getAmount());
-        creatureTest.getInventory().getBatwings().useBatwing();
+        creatureTest.getInventory().getBatwings().useBatwing(creatureTest, caveTest);
+        assertEquals(0, creatureTest.getInventory().getBatwings().getAmount());
+        assertEquals(3500, creatureTest.getAttackCooldownTime());
+        assertEquals(6, caveTest.getMaxBats());
+        assertEquals(4500, caveTest.getBatSpawnRate());
+        creatureTest.getInventory().getBatwings().useBatwing(creatureTest, caveTest);
         assertEquals(0, creatureTest.getInventory().getBatwings().getAmount());
         assertEquals(3500, creatureTest.getAttackCooldownTime());
         assertEquals(6, caveTest.getMaxBats());
         assertEquals(4500, caveTest.getBatSpawnRate());
 
+
         for(int i = 0; i < 4; i++) {
             creatureTest.getInventory().getBatwings().addBatwing();
-            creatureTest.getInventory().getBatwings().useBatwing();
+            creatureTest.getInventory().getBatwings().useBatwing(creatureTest, caveTest);
         }
 
         assertEquals(0, creatureTest.getInventory().getBatwings().getAmount());
@@ -53,10 +59,11 @@ public class BatwingsTest {
         assertEquals(10, caveTest.getMaxBats());
         assertEquals(2500, caveTest.getBatSpawnRate());
 
-        creatureTest.getInventory().getBatwings().addBatwing();
-        creatureTest.getInventory().getBatwings().useBatwing();
 
-        assertEquals(0, creatureTest.getInventory().getBatwings().getAmount());
+        creatureTest.getInventory().getBatwings().addBatwing();
+        creatureTest.getInventory().getBatwings().useBatwing(creatureTest, caveTest);
+
+        assertEquals(1, creatureTest.getInventory().getBatwings().getAmount());
         assertEquals(1500, creatureTest.getAttackCooldownTime());
         assertEquals(10, caveTest.getMaxBats());
         assertEquals(2500, caveTest.getBatSpawnRate());
