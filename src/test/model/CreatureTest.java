@@ -30,7 +30,7 @@ public class CreatureTest {
         batTest = new Bats(0,0);
         batTest2 = new Bats(0,0);
         batTest3 = new Bats(0,0);
-        batTest4 = new Bats (0,0);
+        batTest4 = new Bats(0,0);
         caveTest = new Cave(20,20);
         caveTest.getBats().add(batTest);
         caveTest.getBats().add(batTest2);
@@ -70,7 +70,7 @@ public class CreatureTest {
         assertFalse(creatureTest.move("down", 5, caveTest));
         assertEquals(0, creatureTest.getPosY());
 
-            assertFalse(creatureTest.move("777", 5, caveTest));
+        assertFalse(creatureTest.move("777", 5, caveTest));
 
     }
 
@@ -102,7 +102,7 @@ public class CreatureTest {
         assertTrue(creatureTest.canAttack(caveTest));
 
         batTest.setPosition(6, 6);
-        batTest2.setPosition(6,5 );
+        batTest2.setPosition(6,5);
         assertTrue(creatureTest.canAttack(caveTest));
 
         creatureTest.setPosition(7,7);
@@ -129,6 +129,7 @@ public class CreatureTest {
   
 
     @Test
+    @SuppressWarnings("methodlength")
     void testStartAttackCooldown() {
     
         caveTest.getBats().get(0).setPosition(5,5);
@@ -142,7 +143,7 @@ public class CreatureTest {
 
         creatureTest.startAttackCooldown(creatureTest.getAttackCooldownTime(), caveTest);   
         try {
-            Thread.sleep(creatureTest.getAttackCooldownTime()+600);
+            Thread.sleep(creatureTest.getAttackCooldownTime() + 600);
             assertTrue(creatureTest.canAttack(caveTest));
             assertTrue(creatureTest.attack(caveTest));
         } catch (InterruptedException e) {
@@ -156,7 +157,7 @@ public class CreatureTest {
         creatureTest.startAttackCooldown(creatureTest.getAttackCooldownTime(), caveTest);  
 
         try {
-            Thread.sleep(creatureTest.getAttackCooldownTime()-700);
+            Thread.sleep(creatureTest.getAttackCooldownTime() - 700);
             assertFalse(creatureTest.attack(caveTest));
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());

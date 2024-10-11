@@ -30,10 +30,13 @@ public class BatwingsTest {
     void testBatwingConstructor() {
         assertEquals("Batwings", batwingTest.getName());
         assertEquals(0, batwingTest.getAmount());
-        assertEquals("The witch indicates that she's unsure how many bat wings she may need.\nShe recommends to get 10 or more.\nUse a batwing for a special effect!", batwingTest.getDescription());
+        assertEquals("The witch indicates that she's unsure how many bat wings she may need."
+                    + "\nShe recommends to get 10 or more.\nUse a batwing for a special effect!", 
+                    batwingTest.getDescription());
     }
 
     @Test
+    @SuppressWarnings("methodlength")
     void testUseBatwing() {
         creatureTest.getInventory().getBatwings().addBatwing(); 
         assertEquals(1, creatureTest.getInventory().getBatwings().getAmount());

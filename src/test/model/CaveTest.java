@@ -65,8 +65,9 @@ public class CaveTest {
     }
 
 
-
+    
     @Test
+    @SuppressWarnings("methodlength")
     void testSpawnBats() {
        
 
@@ -81,7 +82,7 @@ public class CaveTest {
         
 
         try {
-            Thread.sleep(caveTest.getBatSpawnRate()-500);
+            Thread.sleep(caveTest.getBatSpawnRate() - 500);
             assertEquals(1, caveTest.getBats().size());
         } catch (InterruptedException e) {
             System.err.println("Sleep interrupted" + e.getMessage());
