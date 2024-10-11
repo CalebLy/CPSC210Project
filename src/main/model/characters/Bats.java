@@ -3,7 +3,7 @@ package model.characters;
 
 import model.GameObject;
 
-public class Bats extends GameObject{
+public class Bats extends GameObject {
 
 
     protected int maxBats;
@@ -11,7 +11,7 @@ public class Bats extends GameObject{
     // Requires: coordinate (x,y) must be within the bounds
     // Effects: Constructs a character with a static name of "Bat", at coordinates (x,y).
     //          
-    public Bats(int x, int y){
+    public Bats(int x, int y) {
         super("Bat", x, y);
     }
 

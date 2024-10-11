@@ -1,9 +1,10 @@
 package model.items;
+
 import model.GameObject;
 import model.characters.Creature;
 import model.rooms.Cave;
 
-public class Batwings extends GameObject{
+public class Batwings extends GameObject {
     
     private String description;
     private int amount;
@@ -14,9 +15,9 @@ public class Batwings extends GameObject{
     public Batwings() {
         super("Batwings",0,0);
         this.amount = 0;
-        this.description = "The witch indicates that she's unsure how many bat wings she may need." + 
-                           "\nShe recommends to get 10 or more." + 
-                           "\nUse a batwing for a special effect!";
+        this.description = "The witch indicates that she's unsure how many bat wings she may need."
+                           + "\nShe recommends to get 10 or more." 
+                           + "\nUse a batwing for a special effect!";
     }
 
 
@@ -28,10 +29,10 @@ public class Batwings extends GameObject{
     //          and number of Batwings will decrease by one, then it will return true.
     //          If there doesn't exist a Batwing, it will return false.
     public boolean useBatwing(Creature creature, Cave cave) {
-        if(amount > 0 && cave.getMaxBats() < 10) {
+        if (amount > 0 && cave.getMaxBats() < 10) {
             creature.setAttackCooldownTime(500);
             cave.stopSpawningBats();
-            cave.spawnBats(cave.getMaxBats()+1, cave.getBatSpawnRate()-500);
+            cave.spawnBats(cave.getMaxBats() + 1, cave.getBatSpawnRate() - 500);
             this.removeObject();
             return true;
         } else {

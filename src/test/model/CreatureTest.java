@@ -43,8 +43,8 @@ public class CreatureTest {
     @Test 
     void testCreatureConstructor() {
         assertEquals("????", creatureTest.getName());
-        assertEquals(0, creatureTest.getX());
-        assertEquals(0, creatureTest.getY());
+        assertEquals(0, creatureTest.getPosX());
+        assertEquals(0, creatureTest.getPosY());
         assertEquals(4000, creatureTest.getAttackCooldownTime());
         assertTrue(creatureTest.getAttackCooldown());
         assertEquals(0, creatureTest.getInventory().getBatwings().getAmount());
@@ -53,22 +53,22 @@ public class CreatureTest {
     @Test 
     void testMove() {
         creatureTest.move("Up", 5, caveTest);
-        assertEquals(5, creatureTest.getY());
+        assertEquals(5, creatureTest.getPosY());
 
         creatureTest.move("right", 5, caveTest);
-        assertEquals(5, creatureTest.getX());
+        assertEquals(5, creatureTest.getPosX());
 
         creatureTest.move("down",5, caveTest);
-        assertEquals(0, creatureTest.getY());
+        assertEquals(0, creatureTest.getPosY());
 
         creatureTest.move("left", 5, caveTest);
-        assertEquals(0, creatureTest.getX());
+        assertEquals(0, creatureTest.getPosX());
 
         assertFalse(creatureTest.move("left", 5, caveTest));
-        assertEquals(0, creatureTest.getX());
+        assertEquals(0, creatureTest.getPosX());
 
         assertFalse(creatureTest.move("down", 5, caveTest));
-        assertEquals(0, creatureTest.getY());
+        assertEquals(0, creatureTest.getPosY());
 
             assertFalse(creatureTest.move("777", 5, caveTest));
 

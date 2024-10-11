@@ -39,15 +39,15 @@ public class CaveTest {
 
     @Test
     void testIsWithinBounds() {
-        assertTrue(caveTest.isWithinBounds(creatureTest.getX(), creatureTest.getY()));
+        assertTrue(caveTest.isWithinBounds(creatureTest.getPosX(), creatureTest.getPosY()));
         creatureTest.setPosition(30, 0);
-        assertFalse(caveTest.isWithinBounds(creatureTest.getX(), creatureTest.getY()));
+        assertFalse(caveTest.isWithinBounds(creatureTest.getPosX(), creatureTest.getPosY()));
         creatureTest.setPosition(30,30);
-        assertFalse(caveTest.isWithinBounds(creatureTest.getX(), creatureTest.getY()));
+        assertFalse(caveTest.isWithinBounds(creatureTest.getPosX(), creatureTest.getPosY()));
         creatureTest.setPosition(0,30);
-        assertFalse(caveTest.isWithinBounds(creatureTest.getX(), creatureTest.getY()));
+        assertFalse(caveTest.isWithinBounds(creatureTest.getPosX(), creatureTest.getPosY()));
         creatureTest.setPosition(20,20);
-        assertTrue(caveTest.isWithinBounds(creatureTest.getX(), creatureTest.getY()));
+        assertTrue(caveTest.isWithinBounds(creatureTest.getPosX(), creatureTest.getPosY()));
     }
 
     @Test

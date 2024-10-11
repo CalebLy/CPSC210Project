@@ -8,7 +8,7 @@ import model.GameObject;
 import model.characters.Bats;
 import model.characters.Creature;
 
-public class Cave extends GameObject{
+public class Cave extends GameObject {
     private int width;
     private int height;
     private int maxBats;
@@ -114,6 +114,7 @@ public class Cave extends GameObject{
     public Bats getBat(int batIndex) {
         return bats.get(batIndex);
     }
+
     // Setter methods
     public void stopSpawningBats() {
         this.isSpawningBats = false;

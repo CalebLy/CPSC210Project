@@ -16,7 +16,7 @@ public class Creature extends GameObject {
     protected boolean abilityToAttack;
     
     // Requires: coordinate (x,y) must be within the bounds
-    // Effects: Creates the Creature character with the name "????" as the creature never refers to himself with a title,
+    // Effects: Creates the Creature character with name "????" as the creature never refers to himself with a title,
     //          at coordinate (x,y).
     public Creature(int x, int y) {
         super("????", x, y);
@@ -54,9 +54,9 @@ public class Creature extends GameObject {
     //          Returns index of gameObject if isInRange. Returns -1 otherwise.
     public int isInRange(Cave cave) {
         for (int i = 0; i < cave.getBats().size(); i++) {
-            int xDifference = Math.abs(cave.getBats().get(i).getX() - this.getX());
-            int yDifference = Math.abs(cave.getBats().get(i).getY() - this.getY());
-            if (xDifference <= 1 && yDifference <= 1) {
+            int differenceX = Math.abs(cave.getBats().get(i).getPosX() - this.getPosX());
+            int differenceY = Math.abs(cave.getBats().get(i).getPosY() - this.getPosY());
+            if (differenceX <= 1 && differenceY <= 1) {
                 return i;
             } 
         }
@@ -66,34 +66,33 @@ public class Creature extends GameObject {
     // Requires: must stay within bounds
     // Modifies: this
     // Effects: Moves the character in the direction of 'direction' a distance of 'distance'
+    @SuppressWarnings("methodlength")
     public boolean move(String direction, int distance, Cave cave) {
-        int originalX = x;
-        int originalY = y;
-
+        int originalX = posX;
+        int originalY = posY;
         switch (direction.toLowerCase()) {
             case "up":
-                y += distance;
+                posY += distance;
                 break;
             case "down":
-                y -= distance;
+                posY -= distance;
                 break;
             case "left":
-                x -= distance;
+                posX -= distance;
                 break;
             case "right":
-                x += distance;
+                posX += distance;
                 break;
             default:
                 return false;
         }
-
-        if (cave.isWithinBounds(x, y)) {
-            this.setPosition(x, y);
+        if (cave.isWithinBounds(posX, posY)) {
+            this.setPosition(posX, posY);
             return true;
         } else {
-            x = originalX;
-            y = originalY;
-            return false;
+            posX = originalX;
+            posY = originalY;
+            return false; 
         }
     }
     
@@ -108,7 +107,7 @@ public class Creature extends GameObject {
         this.attackCooldownTime = attackCooldownTime;
         new Thread(() -> {
 
-            while(cave.getIsActive() && abilityToAttack == true) {
+            while (cave.getIsActive() && abilityToAttack == true) {
 
                 // while(!attackCooldown) {
                 //     try {
