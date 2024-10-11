@@ -6,8 +6,9 @@ public class Cave extends GameObject{
     private int width;
     private int height;
 
-    public Cave(String name, int x, int y, int width, int height) {
-        super(name, x, y);
+    // Effects: Creates a Cave named Bat Cave with dimensions (width-x) x (height-y)
+    public Cave(int x, int y, int width, int height) {
+        super("Bat Cave", x, y);
         this.width = width;
         this.height = height;
     }

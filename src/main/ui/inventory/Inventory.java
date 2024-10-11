@@ -3,12 +3,11 @@ package ui.inventory;
 import model.items.Batwings;
 
 public class Inventory{
-    private Batwings batwings;
-
+    protected Batwings batwings;
     
     // Effects: intanstializes an inventory
     public Inventory(){
-        // stub
+        batwings = new Batwings();
     }
 
     // Effects: Displays inventory. Gives user option to view amount of Batwings,
@@ -16,6 +15,15 @@ public class Inventory{
     public void displayInventory() {
         // stub
     }
+
+
+    // Getter methods
+    public Batwings getBatwings() {
+        return batwings;
+    }
+
+
+
 
 
 
