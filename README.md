@@ -16,5 +16,7 @@ creative adaptation of *Frankenstein*
     - I want the user to to be able to drop, use, and read a short description of the batwings
     - I want the user to be able to freely move around
     - I want the user to be able to engage in set dialogue with created NPCs
-    - I want the user to be able to save multiple files where they may or may not choose different story choices.
     - I want there to be a different storyline depending on certain important choices in dialogue
+    - I want the user to be able to select the quit option from the application menu, and be reminded to save their game while having the option to do so or not.
+    - I want the user to have the choice between multiple files, that they have saved, where they may or may not have chosen different story choices.
+
