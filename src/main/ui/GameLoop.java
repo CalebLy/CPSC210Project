@@ -1,5 +1,7 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import model.GameState;
@@ -9,6 +11,7 @@ import model.rooms.Cave;
 // Constantly updates and checks for any changes that the user makes or actions the user takes
 public class GameLoop {
 
+    private static final String JSON_STORE = "./data/gamestate.json";
     private boolean gameIsRunning = true;
     Scanner scanner = new Scanner(System.in);
     
@@ -20,10 +23,15 @@ public class GameLoop {
         String userChoice = scanner.nextLine();
         switch (userChoice.toLowerCase()) {
             case "l":
-                gs = gs.loadGameState();
+                try {
+                    gs.loadGameState();
+                    System.out.println("Loaded your game from " + JSON_STORE);
+                } catch (IOException e) {
+                    System.out.println("Unable to read from file: " + JSON_STORE);
+                }
                 return true;
             case "f":
-                gs = gs.loadDefaultGameState();
+                gs.loadDefaultGameState();
                 return true;
             default: 
                 System.out.println("Invalid input");
@@ -74,10 +82,18 @@ public class GameLoop {
                 }
                 break;
             case "e":
-                gs.endGame(creature, cave, scanner);
+                scanner.close();
+                System.out.println("Game has ended!");
+                gs.endGame(creature, cave);
                 break;
             case "s":
-                gs.saveGame(creature, cave, scanner);
+                try {
+                    gs.saveGame(creature, cave);
+                    System.out.println("Your game has been successfully saved to " + JSON_STORE);
+                } catch (FileNotFoundException f) {
+                    System.out.println("Unable to write to file: " + JSON_STORE);
+                }
+    
                 break;
             case "h":
                 if (creature.canAttack(cave)) {

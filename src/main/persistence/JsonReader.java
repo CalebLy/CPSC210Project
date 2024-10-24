@@ -49,15 +49,15 @@ public class JsonReader {
 
     // EFFECTS: parses workroom from JSON object and returns it
     private GameState parseGameState(JSONObject jsonObject) {
-        parseCreature(jsonObject.getJSONObject("creature"));
-        parseCave(jsonObject.getJSONObject("cave"));
+        creature = parseCreature(jsonObject.getJSONObject("creature"));
+        cave = parseCave(jsonObject.getJSONObject("cave"));
         GameState gs = new GameState(creature, cave);
         return gs;
     }
 
     // Modifies: creature
     // Effects: parses all data related to creature from JSON object and changes creature variables accordingly
-    private void parseCreature(JSONObject jsonObject) {
+    private Creature parseCreature(JSONObject jsonObject) {
         int xPos = jsonObject.getInt("x");
         int yPos = jsonObject.getInt("y");
         creature = new Creature(xPos, yPos);
@@ -65,17 +65,19 @@ public class JsonReader {
         creature.setAttackCooldown(jsonObject.getBoolean("attackCooldown"));
         creature.setAbilityToAttack(jsonObject.getBoolean("abilityToAttack"));
         creature.getInventory().getBatwings().setBatwing(jsonObject.getInt("batwings"));
+        return creature;
     }
 
     // Modifies: cave
     // Effects: parses all data related to cave from JSON object and changes cave variables accordingly
-    private void parseCave(JSONObject jsonObject) {
+    private Cave parseCave(JSONObject jsonObject) {
         int width = jsonObject.getInt("width");
         int height = jsonObject.getInt("height");
         cave = new Cave(width, height);
         addBats(cave, jsonObject);
         cave.setMaxBats(jsonObject.getInt("maxBats"));
         cave.setBatSpawnRate(jsonObject.getLong("batSpawnRate"));
+        return cave;
     }
 
     private void addBats(Cave cave, JSONObject jsonObject) {
