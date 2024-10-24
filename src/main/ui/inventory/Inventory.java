@@ -35,7 +35,8 @@ public class Inventory {
                 if (this.getBatwings().getAmount() > 0) {
                     this.getBatwings().useBatwing(creature, cave);
                     System.out.println("\nA Batwing has been used! Batwings left: " + this.getBatwings().getAmount());
-                    System.out.println("AttackCooldownTime is now: " + creature.getAttackCooldownTime() + " miliseconds" 
+                    System.out.println("AttackCooldownTime is now: " 
+                                    + creature.getAttackCooldownTime() + " miliseconds" 
                                     + "\nMaxBats is now: " + cave.getMaxBats() 
                                     + "\nBatSpawnRate is now: " + cave.getBatSpawnRate() + " miliseconds"); 
                 } else {
@@ -45,7 +46,8 @@ public class Inventory {
             case "d":
                 if (this.getBatwings().getAmount() > 0) {
                     this.getBatwings().removeObject();
-                    System.out.println("\nA Batwing has been dropped! Batwings left: " + this.getBatwings().getAmount());
+                    System.out.println("\nA Batwing has been dropped! Batwings left: " 
+                                    + this.getBatwings().getAmount());
                 } else {
                     System.out.println("\nOh no! You do not have any Batwings available to drop!");
                 }

@@ -1,15 +1,14 @@
 package persistence;
 
 import model.characters.*;
-import model.items.*;
-import model.rooms.*;
+
 
 import model.GameState;
 
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.List;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 

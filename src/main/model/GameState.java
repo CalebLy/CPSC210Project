@@ -2,7 +2,7 @@ package model;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
+
 
 import org.json.JSONObject;
 
@@ -20,7 +20,6 @@ public class GameState {
     private static final String JSON_STORE = "./data/gamestate.json";
     private Creature creature;
     private Cave cave;
-    private GameLoop gameLoop;
 
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
@@ -30,7 +29,8 @@ public class GameState {
         this.cave = cave;
     }
 
-    public GameState() {}
+    public GameState() {
+    }
 
     public void startGame() throws FileNotFoundException  {
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -60,9 +60,9 @@ public class GameState {
 
     // Effects: Stops all threads/loops. Used to prepare to end the game. Saves game.
     public void saveGame(Creature creature, Cave cave) throws FileNotFoundException {
-            jsonWriter.open(); 
-            jsonWriter.write(this);
-            jsonWriter.close();
+        jsonWriter.open(); 
+        jsonWriter.write(this);
+        jsonWriter.close();
     }
           
 

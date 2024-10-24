@@ -136,8 +136,9 @@ public class GameLoop {
                 System.out.println("\nChoose a distance to move in that direction. Stay within bounds!");
                 int distance = scanner.nextInt();
                 scanner.nextLine();
-                if (!creature.move(direction, distance, cave)) {}
+                if (!creature.move(direction, distance, cave)) {
                     System.out.println("That is out of bounds! Moving has failed.");
+                }
                 break;
             default:
                 System.out.println("Invalid input");
