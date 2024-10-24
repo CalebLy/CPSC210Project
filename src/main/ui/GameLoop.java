@@ -82,9 +82,9 @@ public class GameLoop {
                 }
                 break;
             case "e":
-                scanner.close();
                 System.out.println("Game has ended!");
                 gs.endGame(creature, cave);
+                gameIsRunning = false;
                 break;
             case "s":
                 try {
@@ -147,6 +147,10 @@ public class GameLoop {
 
     public boolean getGameIsRunning() {
         return this.gameIsRunning;
+    }
+
+    public void setGameIsRunning(boolean activity) {
+        gameIsRunning = activity;
     }
 
 }

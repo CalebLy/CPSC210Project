@@ -21,7 +21,6 @@ public class GameState {
     private Creature creature;
     private Cave cave;
     private GameLoop gameLoop;
-    boolean gameIsRunning;
 
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
@@ -36,8 +35,8 @@ public class GameState {
     public void startGame() throws FileNotFoundException  {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-        boolean gameIsRunning = true;
         GameLoop gameLoop = new GameLoop();
+        gameLoop.setGameIsRunning(true);
         boolean startUp;
 
         do {
@@ -56,7 +55,6 @@ public class GameState {
     public void endGame(Creature creature, Cave cave) {
         creature.setAbilityToAttack(false);
         cave.stopSpawningBats();
-        gameIsRunning = false;
     }
 
 
