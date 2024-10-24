@@ -124,6 +124,16 @@ public class Cave extends GameObject {
         this.isSpawningBats = false;
     }
 
+    public void setMaxBats(int maxBats) {
+        this.maxBats = maxBats;
+    }
+
+    public void setBatSpawnRate(long batSpawnRate) {
+        this.batSpawnRate = batSpawnRate;
+    }
+
+
+
     // Data persistence
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

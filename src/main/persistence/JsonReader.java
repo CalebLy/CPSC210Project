@@ -2,7 +2,6 @@ package persistence;
 
 import model.GameState;
 import model.characters.*;
-import model.items.*;
 import model.rooms.*;
 
 
@@ -21,6 +20,8 @@ import org.json.*;
 // Represents a reader that reads workroom from JSON data stored in file
 public class JsonReader {
     private String source;
+    private Creature creature;
+    private Cave cave;
 
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
@@ -48,11 +49,45 @@ public class JsonReader {
 
     // EFFECTS: parses workroom from JSON object and returns it
     private GameState parseGameState(JSONObject jsonObject) {
-        String name = jsonObject.getString("name");
-        GameState gs = new GameState(name);
-        // TODO
-        // Call all addXYZ methods.
+        parseCreature(jsonObject);
+        parseCave(jsonObject);
+        GameState gs = new GameState(creature, cave);
         return gs;
     }
+
+    // Modifies: creature
+    // Effects: parses all data related to creature from JSON object and changes creature variables accordingly
+    private void parseCreature(JSONObject jsonObject) {
+        int xPos = jsonObject.getInt("x");
+        int yPos = jsonObject.getInt("y");
+        creature = new Creature(xPos, yPos);
+        creature.setAttackCooldownTime(jsonObject.getLong("attackCooldownTime"));
+        creature.setAttackCooldown(jsonObject.getBoolean("attackCooldown"));
+        creature.setAbilityToAttack(jsonObject.getBoolean("abilityToAttack"));
+        creature.getInventory().getBatwings().setBatwing(jsonObject.getInt("batwings"));
+    }
+
+    // Modifies: cave
+    // Effects: parses all data related to cave from JSON object and changes cave variables accordingly
+    private void parseCave(JSONObject jsonObject) {
+        int width = jsonObject.getInt("width");
+        int height = jsonObject.getInt("height");
+        cave = new Cave(width, height);
+        addBats(cave, jsonObject);
+        cave.setMaxBats(jsonObject.getInt("maxBats"));
+        cave.setBatSpawnRate(jsonObject.getLong("batSpawnRate"));
+    }
+
+    // Modifies: cave
+    // Effects: parses the locations of each bat from JSON object and adds it to the cave
+    private void addBats(Cave cave, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("Bats");
+        for (Object json : jsonArray) {
+            Bats bat = new Bats(jsonObject.getInt("x"),jsonObject.getInt("y"));
+            cave.getBats().add(bat);
+        }
+    }
+
+
 
 }

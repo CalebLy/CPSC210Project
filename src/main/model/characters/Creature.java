@@ -174,7 +174,7 @@ public class Creature extends GameObject {
         json.put("abilityToAttack", abilityToAttack);
         json.put("x", getPosX());
         json.put("y", getPosY());
-        json.put("batwings", inventory.getBatwings());
+        json.put("batwings", inventory.getBatwings().getAmount());
         return json;
     }
 

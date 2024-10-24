@@ -12,6 +12,25 @@ public class GameLoop {
     private boolean gameIsRunning = true;
     Scanner scanner = new Scanner(System.in);
     private GameState gs = new GameState();
+    
+
+    // Effects: Loads previously played file, or a fresh file.
+    public boolean initialStartUp() {
+        System.out.println("Type 'l' to load a saved file" 
+                        + "\nType 'f' to start a fresh save game.");
+        String userChoice = scanner.nextLine();
+        switch (userChoice.toLowerCase()) {
+            case "l":
+                gs = gs.loadGameState();
+                return true;
+            case "f":
+                return true;
+            default: 
+                System.out.println("Invalid input");
+                return false;
+        }
+    }
+    
 
     // Effect: Prints defaults statements after certain actions are taken by the user
     public void defaultLoopPrintStatement(Creature creature, Cave cave) {
@@ -31,6 +50,12 @@ public class GameLoop {
     // Effects: controls what happens when the user tries to do any of the default options
     @SuppressWarnings("methodlength")
     public void defaultLoopOptions(Creature creature, Cave cave) {
+        
+        boolean startUp;
+        do {
+            startUp = initialStartUp();
+        } while (!startUp);
+
         defaultLoopPrintStatement(creature, cave);
         if (creature.isInRange(cave) != -1) {
             System.out.println("YOU ARE IN THE RANGE OF A BAT!");
@@ -38,8 +63,8 @@ public class GameLoop {
         System.out.println("Type 'm' to open the Move menu" 
                         + "\nType 'i' to open the inventory"
                         + "\nType 'h' to try to hit a bat"
-                        + "\nType 'q' to quit without saving the game"
-                        + "\nType 's' to quit and save the game");
+                        + "\nType 's' to save game"
+                        + "\nType 'e' to end the game");
         String userChoice = scanner.nextLine();
         switch (userChoice.toLowerCase()) {
             case "m":
@@ -51,13 +76,11 @@ public class GameLoop {
                     creature.getInventory().displayInventory(creature, cave);
                 }
                 break;
-            case "q":
-                gs.endGameNoSave(creature, cave, scanner);
+            case "e":
+                gs.endGame(creature, cave, scanner);
                 break;
             case "s":
-                System.out.println("Enter your desired name for this save: ");
-                String fileNameUserChoice = scanner.nextLine();
-                gs.endGameWithSave(creature, cave, scanner, fileNameUserChoice);
+                gs.saveGame(creature, cave, scanner);
                 break;
             case "h":
                 if (creature.canAttack(cave)) {

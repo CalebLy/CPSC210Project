@@ -1,30 +1,39 @@
 package model;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.characters.*;
-import model.items.*;
 import model.rooms.*;
 import ui.GameLoop;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
 public class GameState {
+    private static final String JSON_STORE = "./data/gamestate.json";
     private Creature creature;
     private Cave cave;
     private GameLoop gameLoop;
     boolean gameIsRunning;
 
-    public GameState() {
+    private JsonReader jsonReader;
+    private JsonWriter jsonWriter;
 
+    public GameState(Creature creature, Cave cave) {
+        this.creature = creature;
+        this.cave = cave;
     }
 
-    public void startGame() {
+    public GameState() {}
+
+    public void startGame() throws FileNotFoundException  {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         boolean gameIsRunning = true;
-        Creature creature = new Creature(0, 0);
-        Cave cave = new Cave(30,30);
         GameLoop gameLoop = new GameLoop();
 
         creature.startAttackCooldown(creature.getAttackCooldownTime(), cave);
@@ -36,30 +45,38 @@ public class GameState {
     }
 
     // Effects: Stops all threads/loops. Used to prepare to end the game.
-    public void endGameNoSave(Creature creature, Cave cave, Scanner scanner) {
+    public void endGame(Creature creature, Cave cave, Scanner scanner) {
         scanner.close();
         creature.setAbilityToAttack(false);
         cave.stopSpawningBats();
         System.out.println("Game has ended!");
         gameIsRunning = false;
     }
+
 
     // Effects: Stops all threads/loops. Used to prepare to end the game. Saves game.
-    public void endGameWithSave(Creature creature, Cave cave, Scanner scanner, String fileName) {
-        scanner.close();
-        creature.setAbilityToAttack(false);
-        cave.stopSpawningBats();
-        System.out.println("Game has ended!");
-        // TODO
-        try() {
-            // TODO
-            System.out.println("Game successfully saved to " + filePath);
-        } catch (IOException e) {
-            System.err.println("Error saving game");
+    public void saveGame(Creature creature, Cave cave, Scanner scanner) {
+        try {
+            jsonWriter.open(); 
+            jsonWriter.write(this);
+            jsonWriter.close();
+            System.out.println("Your game has been successfully saved to " + JSON_STORE);
+        } catch (FileNotFoundException f) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
-        gameIsRunning = false;
     }
 
+    // Effects: Loads the gamestate of the file in JSON_Store
+    public GameState loadGameState() {
+        try {
+           GameState loadedGameState = jsonReader.read(); 
+           System.out.println("Loaded your game from " + JSON_STORE);
+           return loadedGameState;
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+            return null;
+        }
+    }
     
     // Data persistence
     public JSONObject toJson() {
@@ -68,5 +85,7 @@ public class GameState {
         json.put("creature", creature.toJson());
         return json;
     }
+
+
 
 }

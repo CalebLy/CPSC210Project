@@ -56,4 +56,9 @@ public class Batwings extends GameObject {
     public int getAmount() {
         return amount;
     }
+
+    // Setter methods
+    public void setBatwing(int amount) {
+        this.amount = amount;
+    }
 }
