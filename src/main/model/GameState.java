@@ -13,6 +13,9 @@ import ui.GameLoop;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+// Referenced from the JsonSerialization Demo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 public class GameState {
     private static final String JSON_STORE = "./data/gamestate.json";
     private Creature creature;
@@ -35,12 +38,17 @@ public class GameState {
         jsonReader = new JsonReader(JSON_STORE);
         boolean gameIsRunning = true;
         GameLoop gameLoop = new GameLoop();
+        boolean startUp;
+
+        do {
+            startUp = gameLoop.initialStartUp(this);
+        } while (!startUp);
 
         creature.startAttackCooldown(creature.getAttackCooldownTime(), cave);
         cave.spawnBats(cave.getMaxBats(), cave.getBatSpawnRate());
 
         while (gameLoop.getGameIsRunning()) {
-            gameLoop.defaultLoopOptions(creature, cave);
+            gameLoop.defaultLoopOptions(creature, cave, this);
         }
     }
 
@@ -76,6 +84,13 @@ public class GameState {
             System.out.println("Unable to read from file: " + JSON_STORE);
             return null;
         }
+    }
+
+    public GameState loadDefaultGameState() {
+        creature = new Creature(0,0);
+        cave = new Cave(30, 30);
+        GameState gs = new GameState(creature, cave);
+        return gs;
     }
     
     // Data persistence

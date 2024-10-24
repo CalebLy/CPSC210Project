@@ -11,11 +11,10 @@ public class GameLoop {
 
     private boolean gameIsRunning = true;
     Scanner scanner = new Scanner(System.in);
-    private GameState gs = new GameState();
     
 
     // Effects: Loads previously played file, or a fresh file.
-    public boolean initialStartUp() {
+    public boolean initialStartUp(GameState gs) {
         System.out.println("Type 'l' to load a saved file" 
                         + "\nType 'f' to start a fresh save game.");
         String userChoice = scanner.nextLine();
@@ -24,6 +23,7 @@ public class GameLoop {
                 gs = gs.loadGameState();
                 return true;
             case "f":
+                gs = gs.loadDefaultGameState();
                 return true;
             default: 
                 System.out.println("Invalid input");
@@ -49,12 +49,9 @@ public class GameLoop {
 
     // Effects: controls what happens when the user tries to do any of the default options
     @SuppressWarnings("methodlength")
-    public void defaultLoopOptions(Creature creature, Cave cave) {
+    public void defaultLoopOptions(Creature creature, Cave cave, GameState gs) {
         
-        boolean startUp;
-        do {
-            startUp = initialStartUp();
-        } while (!startUp);
+
 
         defaultLoopPrintStatement(creature, cave);
         if (creature.isInRange(cave) != -1) {
@@ -130,17 +127,6 @@ public class GameLoop {
                 System.out.println("Invalid input");
                 break;
         }   
-    }
-    
-
-
-    // Effects: Saves the user's GameState.
-    public void saveGameState() {
-
-    }
-
-    // Effects: Loads the user's chosen GameState.
-    public void loadGameState() {
     }
 
     public boolean getGameIsRunning() {

@@ -12,6 +12,9 @@ import model.GameObject;
 import model.characters.Bats;
 import model.characters.Creature;
 
+// Referenced from the JsonSerialization Demo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 public class Cave extends GameObject {
     private int width;
     private int height;

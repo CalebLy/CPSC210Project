@@ -49,8 +49,8 @@ public class JsonReader {
 
     // EFFECTS: parses workroom from JSON object and returns it
     private GameState parseGameState(JSONObject jsonObject) {
-        parseCreature(jsonObject);
-        parseCave(jsonObject);
+        parseCreature(jsonObject.getJSONObject("creature"));
+        parseCave(jsonObject.getJSONObject("cave"));
         GameState gs = new GameState(creature, cave);
         return gs;
     }
@@ -78,16 +78,16 @@ public class JsonReader {
         cave.setBatSpawnRate(jsonObject.getLong("batSpawnRate"));
     }
 
-    // Modifies: cave
-    // Effects: parses the locations of each bat from JSON object and adds it to the cave
     private void addBats(Cave cave, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("Bats");
-        for (Object json : jsonArray) {
-            Bats bat = new Bats(jsonObject.getInt("x"),jsonObject.getInt("y"));
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject batJson = jsonArray.getJSONObject(i); 
+            int x = batJson.getInt("x");
+            int y = batJson.getInt("y");
+            Bats bat = new Bats(x, y); 
             cave.getBats().add(bat);
         }
     }
-
 
 
 }
