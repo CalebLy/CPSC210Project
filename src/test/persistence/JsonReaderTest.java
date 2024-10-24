@@ -1,15 +1,16 @@
 package persistence;
 
-import model.characters.*;
-import model.items.*;
-import model.rooms.*;
-
+import model.Category;
+import model.GameState;
+import model.Thingy;
+import model.WorkRoom;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 // Referenced from the JsonSerialization Demo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
@@ -20,7 +21,7 @@ class JsonReaderTest extends JsonTest {
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            WorkRoom wr = reader.read();
+            GameState gs = reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -28,10 +29,10 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderEmptyWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
+    void testReaderNoBatsGameState() {
+        JsonReader reader = new JsonReader("./data/testReaderNoBatsGameState.json");
         try {
-            WorkRoom wr = reader.read();
+            GameState game = reader.read();
             assertEquals("My work room", wr.getName());
             assertEquals(0, wr.numThingies());
         } catch (IOException e) {
@@ -40,8 +41,8 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+    void testReaderGeneralGameState() {
+        JsonReader reader = new JsonReader("./data/testReaderGeneralGameState.json");
         try {
             WorkRoom wr = reader.read();
             assertEquals("My work room", wr.getName());

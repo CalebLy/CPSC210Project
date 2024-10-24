@@ -1,8 +1,11 @@
 package persistence;
 
-import model.Category;
-import model.Thingy;
-import model.WorkRoom;
+import model.characters.*;
+import model.items.*;
+import model.rooms.*;
+
+import model.GameState;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -10,17 +13,16 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 // Referenced from the JsonSerialization Demo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
-class JsonReaderTest extends JsonTest {
+class JsonWriterTest extends JsonTest {
 
     @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            WorkRoom wr = reader.read();
+            GameState gs = reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -28,27 +30,23 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderEmptyWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
+    void testReaderNoBatsGameState() {
+        JsonReader reader = new JsonReader("./data/testReaderNoBatsGameState.json");
         try {
-            WorkRoom wr = reader.read();
-            assertEquals("My work room", wr.getName());
-            assertEquals(0, wr.numThingies());
+            GameState gs = reader.read();
+            assertEquals("My work room", gs.getName());
+            assertEquals(0, gs.numThingies());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
     }
 
     @Test
-    void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+    void testReaderGeneralGameState() {
+        JsonReader reader = new JsonReader("./data/testReaderGeneralGameState.json");
         try {
-            WorkRoom wr = reader.read();
-            assertEquals("My work room", wr.getName());
-            List<Thingy> thingies = wr.getThingies();
-            assertEquals(2, thingies.size());
-            checkThingy("needle", Category.STITCHING, thingies.get(0));
-            checkThingy("saw", Category.WOODWORK, thingies.get(1));
+            GameState gs = reader.read();
+
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

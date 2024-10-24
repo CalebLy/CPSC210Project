@@ -1,7 +1,5 @@
 package persistence;
-import model.characters.*;
-import model.items.*;
-import model.rooms.*;
+import model.GameState;
 import org.json.JSONObject;
 
 
@@ -29,9 +27,9 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workroom to file
-    public void write(WorkRoom wr) {
-        JSONObject json = wr.toJson();
+    // EFFECTS: writes JSON representation of GameState to file
+    public void write(GameState gs) {
+        JSONObject json = gs.toJson();
         saveToFile(json.toString(TAB));
     }
 
