@@ -36,7 +36,8 @@ public class GameLoop {
         System.out.println("Type 'm' to open the Move menu" 
                         + "\nType 'i' to open the inventory"
                         + "\nType 'h' to try to hit a bat"
-                        + "\nType 'e' to end the game");
+                        + "\nType 'q' to quit without saving the game"
+                        + "\nType 's' to quit and save the game");
         String userChoice = scanner.nextLine();
         switch (userChoice.toLowerCase()) {
             case "m":
@@ -48,7 +49,11 @@ public class GameLoop {
                     creature.getInventory().displayInventory(creature, cave);
                 }
                 break;
-            case "e":
+            case "q":
+                endGame(creature, cave);
+                break;
+            case "s":
+                saveGameState();
                 endGame(creature, cave);
                 break;
             case "h":
@@ -108,6 +113,15 @@ public class GameLoop {
         cave.stopSpawningBats();
         System.out.println("Game has ended!");
         gameIsRunning = false;
+    }
+
+    // Effects: Saves the user's GameState.
+    public void saveGameState() {
+
+    }
+
+    // Effects: Loads the user's chosen GameState.
+    public void loadGameState() {
     }
 
     public boolean getGameIsRunning() {
