@@ -8,11 +8,11 @@
    - x, y coordinates
 
 # model.items.Batwings
-   - amount of batwings
+   - amount of batwings (probably get this information from the creature class?)
 
 # model.rooms.Cave
-   - width
-   - height
+   - width (constant? so no need)
+   - height (constant? so no need)
    - maxBats
    - batSpawnRate
    - list of bats

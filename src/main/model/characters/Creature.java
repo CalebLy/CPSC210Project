@@ -4,6 +4,10 @@ import model.GameObject;
 import model.rooms.Cave;
 import ui.inventory.Inventory;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 
 
 // This class represents the user's initial character.
@@ -162,7 +166,13 @@ public class Creature extends GameObject {
     }
 
     
-    
+    // Data persistence
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        return json;
+        //stub
+    }
 
 
 

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import model.GameObject;
 import model.characters.Bats;
 import model.characters.Creature;
@@ -120,6 +124,19 @@ public class Cave extends GameObject {
         this.isSpawningBats = false;
     }
 
+    // Data persistence
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        return json;
+        //stub
+    }
 
+    // Effects: returns x and y position of each bat
+    public JSONArray batsToJson() {
+        JSONArray jsonArray = new JSONArray();
+        return jsonArray;
+        //stub
+    }
 
 }
