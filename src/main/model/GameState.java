@@ -88,6 +88,15 @@ public class GameState {
         return json;
     }
 
+    // Getter methods
+    public Creature getCreature() {
+        return creature;
+    }
+
+    public Cave getCave() {
+        return cave;
+    }
+
 
 
 }

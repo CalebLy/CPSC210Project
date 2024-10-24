@@ -18,16 +18,16 @@ public class GameLoop {
 
     // Effects: Loads previously played file, or a fresh file.
     public boolean initialStartUp(GameState gs) {
-        System.out.println("Type 'l' to load a saved file" 
+        System.out.println("\nType 'l' to load a saved file" 
                         + "\nType 'f' to start a fresh save game.");
         String userChoice = scanner.nextLine();
         switch (userChoice.toLowerCase()) {
             case "l":
                 try {
                     gs.loadGameState();
-                    System.out.println("Loaded your game from " + JSON_STORE);
+                    System.out.println("\nLoaded your game from " + JSON_STORE);
                 } catch (IOException e) {
-                    System.out.println("Unable to read from file: " + JSON_STORE);
+                    System.out.println("\nUnable to read from file: " + JSON_STORE);
                 }
                 return true;
             case "f":
@@ -82,16 +82,16 @@ public class GameLoop {
                 }
                 break;
             case "e":
-                System.out.println("Game has ended!");
+                System.out.println("\nGame has ended!");
                 gs.endGame(creature, cave);
                 gameIsRunning = false;
                 break;
             case "s":
                 try {
                     gs.saveGame(creature, cave);
-                    System.out.println("Your game has been successfully saved to " + JSON_STORE);
+                    System.out.println("\nYour game has been successfully saved to " + JSON_STORE);
                 } catch (FileNotFoundException f) {
-                    System.out.println("Unable to write to file: " + JSON_STORE);
+                    System.out.println("\nUnable to write to file: " + JSON_STORE);
                 }
     
                 break;

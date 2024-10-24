@@ -1,13 +1,10 @@
 package persistence;
 
-import model.Category;
 import model.GameState;
-import model.Thingy;
-import model.WorkRoom;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.List;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,13 +12,14 @@ import static org.junit.jupiter.api.Assertions.*;
 // Referenced from the JsonSerialization Demo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
-class JsonReaderTest extends JsonTest {
+class JsonReaderTest {
 
     @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            GameState gs = reader.read();
+            GameState gs = new GameState();
+            gs = reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -29,12 +27,15 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderNoBatsGameState() {
-        JsonReader reader = new JsonReader("./data/testReaderNoBatsGameState.json");
+    void testReaderDefaultGameState() {
+        JsonReader reader = new JsonReader("./data/testReaderDefaultGameState.json");
         try {
-            GameState game = reader.read();
-            assertEquals("My work room", wr.getName());
-            assertEquals(0, wr.numThingies());
+            GameState gs = new GameState();
+            gs = reader.read();
+            assertEquals(0, gs.getCreature().getPosX());
+            assertEquals(0, gs.getCreature().getPosY());
+            assertEquals(30, gs.getCave().getHeight());
+            assertEquals(30, gs.getCave().getWidth());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -44,12 +45,20 @@ class JsonReaderTest extends JsonTest {
     void testReaderGeneralGameState() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralGameState.json");
         try {
-            WorkRoom wr = reader.read();
-            assertEquals("My work room", wr.getName());
-            List<Thingy> thingies = wr.getThingies();
-            assertEquals(2, thingies.size());
-            checkThingy("needle", Category.STITCHING, thingies.get(0));
-            checkThingy("saw", Category.WOODWORK, thingies.get(1));
+            GameState gs = reader.read();
+            assertEquals(0, gs.getCreature().getPosX());
+            assertEquals(6, gs.getCreature().getPosY());
+            assertEquals(30, gs.getCave().getHeight());
+            assertEquals(30, gs.getCave().getWidth());
+
+            assertEquals(4500, gs.getCave().getBatSpawnRate());
+            assertEquals(6, gs.getCave().getMaxBats());
+            
+            assertEquals(14, gs.getCave().getBat(0).getPosX());
+            assertEquals(9, gs.getCave().getBat(0).getPosY());
+
+            assertEquals(27, gs.getCave().getBat(1).getPosX());
+            assertEquals(18, gs.getCave().getBat(1).getPosY());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

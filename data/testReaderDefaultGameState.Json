@@ -1,0 +1,17 @@
+{
+    "cave": {
+        "Bats": [],
+        "batSpawnRate": 5000,
+        "maxBats": 5,
+        "width": 30,
+        "height": 30
+    },
+    "creature": {
+        "attackCooldownTime": 4000,
+        "batwings": 0,
+        "x": 0,
+        "y": 0,
+        "abilityToAttack": false,
+        "attackCooldown": true
+    }
+}
