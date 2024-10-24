@@ -125,18 +125,23 @@ public class Cave extends GameObject {
     }
 
     // Data persistence
-    @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
+        json.put("Bats", batsToJson());
+        json.put("maxBats", maxBats);
+        json.put("batSpawnRate", batSpawnRate);
+        json.put("width", width);
+        json.put("height", height);
         return json;
-        //stub
     }
 
-    // Effects: returns x and y position of each bat
+    // Effects: creates JSONArray with x and y position of each bat
     public JSONArray batsToJson() {
         JSONArray jsonArray = new JSONArray();
+        for (Bats bat : bats) {
+            jsonArray.put(bat.toJson());
+        }
         return jsonArray;
-        //stub
     }
 
 }

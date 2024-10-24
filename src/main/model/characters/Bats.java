@@ -1,9 +1,11 @@
 package model.characters;
 
+import persistence.Writable;
+import org.json.JSONObject;
 
 import model.GameObject;
 
-public class Bats extends GameObject {
+public class Bats extends GameObject implements Writable {
 
 
     protected int maxBats;
@@ -15,5 +17,12 @@ public class Bats extends GameObject {
         super("Bat", x, y);
     }
 
+  
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("x", getPosX());
+        json.put("y", getPosY());
+        return json;
+    }
 
 }

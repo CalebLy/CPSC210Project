@@ -167,11 +167,15 @@ public class Creature extends GameObject {
 
     
     // Data persistence
-    @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
+        json.put("attackCooldownTime", attackCooldownTime);
+        json.put("attackCooldown", attackCooldown);
+        json.put("abilityToAttack", abilityToAttack);
+        json.put("x", getPosX());
+        json.put("y", getPosY());
+        json.put("batwings", inventory.getBatwings());
         return json;
-        //stub
     }
 
 

@@ -2,6 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
+import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
 
@@ -10,6 +11,7 @@ public class GameLoop {
 
     private boolean gameIsRunning = true;
     Scanner scanner = new Scanner(System.in);
+    private GameState gs = new GameState();
 
     // Effect: Prints defaults statements after certain actions are taken by the user
     public void defaultLoopPrintStatement(Creature creature, Cave cave) {
@@ -50,11 +52,12 @@ public class GameLoop {
                 }
                 break;
             case "q":
-                endGame(creature, cave);
+                gs.endGameNoSave(creature, cave, scanner);
                 break;
             case "s":
-                saveGameState();
-                endGame(creature, cave);
+                System.out.println("Enter your desired name for this save: ");
+                String fileNameUserChoice = scanner.nextLine();
+                gs.endGameWithSave(creature, cave, scanner, fileNameUserChoice);
                 break;
             case "h":
                 if (creature.canAttack(cave)) {
@@ -106,14 +109,7 @@ public class GameLoop {
         }   
     }
     
-    // Effects: Stops all threads/loops. Used to prepare to end the game.
-    public void endGame(Creature creature, Cave cave) {
-        scanner.close();
-        creature.setAbilityToAttack(false);
-        cave.stopSpawningBats();
-        System.out.println("Game has ended!");
-        gameIsRunning = false;
-    }
+
 
     // Effects: Saves the user's GameState.
     public void saveGameState() {
