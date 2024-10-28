@@ -1,4 +1,5 @@
 package persistence;
+
 import model.GameState;
 import org.json.JSONObject;
 

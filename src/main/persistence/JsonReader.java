@@ -58,9 +58,9 @@ public class JsonReader {
     // Modifies: creature
     // Effects: parses all data related to creature from JSON object and changes creature variables accordingly
     private Creature parseCreature(JSONObject jsonObject) {
-        int xPos = jsonObject.getInt("x");
-        int yPos = jsonObject.getInt("y");
-        creature = new Creature(xPos, yPos);
+        int posX = jsonObject.getInt("x");
+        int posY = jsonObject.getInt("y");
+        creature = new Creature(posX, posY);
         creature.setAttackCooldownTime(jsonObject.getLong("attackCooldownTime"));
         creature.setAttackCooldown(jsonObject.getBoolean("attackCooldown"));
         creature.setAbilityToAttack(jsonObject.getBoolean("abilityToAttack"));

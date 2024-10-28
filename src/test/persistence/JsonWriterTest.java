@@ -50,7 +50,9 @@ class JsonWriterTest {
         }
     }
 
+
     @Test
+    @SuppressWarnings("methodlength")
     void testWriterGeneralWorkroom() {
         try {
             GameState gs = new GameState();

@@ -32,15 +32,17 @@ public class Inventory {
                 System.out.println("\nBatwings: " + this.getBatwings().getAmount());
                 break;
             case "u":
-                if (this.getBatwings().getAmount() > 0) {
+                if (this.getBatwings().getAmount() > 0 && this.getBatwings().useBatwing(creature, cave)) {
                     this.getBatwings().useBatwing(creature, cave);
                     System.out.println("\nA Batwing has been used! Batwings left: " + this.getBatwings().getAmount());
                     System.out.println("AttackCooldownTime is now: " 
                                     + creature.getAttackCooldownTime() + " miliseconds" 
                                     + "\nMaxBats is now: " + cave.getMaxBats() 
                                     + "\nBatSpawnRate is now: " + cave.getBatSpawnRate() + " miliseconds"); 
-                } else {
+                } else if (this.getBatwings().getAmount() == 0) {
                     System.out.println("\nOh no! You do not have any Batwings available to use!");
+                } else if (!this.getBatwings().useBatwing(creature, cave)) {
+                    System.out.println("You've used the maximum amount of batwings!");
                 }
                 break;
             case "d":
