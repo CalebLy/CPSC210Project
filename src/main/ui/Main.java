@@ -16,12 +16,17 @@ import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
 import ui.gui.Creature.CreatureGUI;
+import ui.gui.Bats.BatsGUI;
 
 
 public class Main {
     public static void main(String[] args) throws Exception {
        // UI TESTING AREA // 
         MyFrame myFrame = new MyFrame();
+        BatsGUI testBat = new BatsGUI();
+
+        myFrame.add(testBat);
+        myFrame.repaint();
 
    
 

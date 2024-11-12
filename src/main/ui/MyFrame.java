@@ -29,30 +29,30 @@ public class MyFrame extends JFrame implements ActionListener {
 
     public MyFrame() {
 
-        testButton = new JButton();
+        // testButton = new JButton();
 
-        // Adjusting properties of Button
-        testButton.setFocusable(false);
-        testButton.setBounds(200, 200, 350, 350);
-        testButton.addActionListener(e -> {
-            System.out.println("test");
-            testButton.setEnabled(false);
-        });
+        // // Adjusting properties of Button
+        // testButton.setFocusable(false);
+        // testButton.setBounds(200, 200, 350, 350);
+        // testButton.addActionListener(e -> {
+        //     System.out.println("test");
+        //     testButton.setEnabled(false);
+        // });
 
-        // Adding Icon to Button
-        ImageIcon testButtonIcon = new ImageIcon("src\\main\\ui\\gui\\Icon\\Cropped New Logo.png");
-        testButton.setIcon(testButtonIcon);
+        // // Adding Icon to Button
+        // ImageIcon testButtonIcon = new ImageIcon("src\\main\\ui\\gui\\Icon\\Cropped New Logo.png");
+        // testButton.setIcon(testButtonIcon);
         
-        // Text on Button
-        testButton.setText("TestButton");
-        testButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
+        // // Text on Button
+        // testButton.setText("TestButton");
+        // testButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
 
-        // Changing orientation of the text
-        testButton.setHorizontalTextPosition(JButton.CENTER);
-        testButton.setVerticalTextPosition(JButton.BOTTOM);
-        testButton.setIconTextGap(10);
+        // // Changing orientation of the text
+        // testButton.setHorizontalTextPosition(JButton.CENTER);
+        // testButton.setVerticalTextPosition(JButton.BOTTOM);
+        // testButton.setIconTextGap(10);
         
-        this.add(testButton);
+        // this.add(testButton);
 
         // Frame Properties
         this.setTitle("Frankenstein Adaptation");
@@ -67,9 +67,9 @@ public class MyFrame extends JFrame implements ActionListener {
         // Application Icon
         ImageIcon logoImage = new ImageIcon("src\\main\\ui\\gui\\Icon\\Final Cropped Resized Logo.png");
         this.setIconImage(logoImage.getImage());
-        this.getContentPane().setBackground(Color.black);
+        this.getContentPane().setBackground(Color.WHITE);
 
-        CreatureGUI creatureGUI = new CreatureGUI(new Creature(50,50), new Cave(1376,768), this);
+        CreatureGUI creatureGUI = new CreatureGUI(new Creature(200,200), new Cave(1376,768));
         this.add(creatureGUI, BorderLayout.CENTER);
         creatureGUI.setFocusable(true);
         creatureGUI.requestFocusInWindow();
