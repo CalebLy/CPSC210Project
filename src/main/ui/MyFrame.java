@@ -4,7 +4,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.border.Border;
 
+import model.characters.Creature;
+import model.rooms.Cave;
+import ui.gui.Creature.CreatureGUI;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -13,11 +19,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class MyFrame extends JFrame implements ActionListener, KeyListener {
+public class MyFrame extends JFrame implements ActionListener {
     
     JButton testButton;
+    int boundaryX = 1366;
+    int boundaryY = 768;
 
-    MyFrame() {
+
+
+    public MyFrame() {
 
         testButton = new JButton();
 
@@ -25,7 +35,7 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
         testButton.setFocusable(false);
         testButton.setBounds(200, 200, 350, 350);
         testButton.addActionListener(e -> {
-            System.out.println("hi aurora");
+            System.out.println("test");
             testButton.setEnabled(false);
         });
 
@@ -47,9 +57,10 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
         // Frame Properties
         this.setTitle("Frankenstein Adaptation");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(null);
+        this.setLayout(new BorderLayout(10,5 ));
         this.setResizable(false);
-        this.setSize(1200,720);
+
+        this.setSize(boundaryX, boundaryY);
         this.setVisible(true);
 
 
@@ -58,7 +69,12 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
         this.setIconImage(logoImage.getImage());
         this.getContentPane().setBackground(Color.black);
 
-        this.addKeyListener(this);
+        CreatureGUI creatureGUI = new CreatureGUI(new Creature(50,50), new Cave(1376,768), this);
+        this.add(creatureGUI, BorderLayout.CENTER);
+        creatureGUI.setFocusable(true);
+        creatureGUI.requestFocusInWindow();
+
+        // this.addKeyListener(this);
         
     }
 
@@ -66,21 +82,39 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
     }
 
-    @Override   
-    // Effects: Invoked when a key is typed. Uses KeyChar, char output
-    public void keyTyped(KeyEvent e) {
+    // @Override   
+    // // Effects: Invoked when a key is typed. Uses KeyChar, char output
+    // public void keyTyped(KeyEvent e) {
 
+    // }
+
+    // @Override
+    // // Effects: Invoked when a physical key is pressed down. Uses KeyCode, int output
+    // public void keyPressed(KeyEvent e) {
+    // }
+
+    // @Override
+    // // Effects: Called whenever a button is released.
+    // public void keyReleased(KeyEvent e) {
+    //     System.out.println("You released key char: " + e.getKeyChar());
+    //     System.out.println("You released key code: " + e.getKeyCode());
+    // }
+
+    // Getter methods
+    public int getBoundaryX() {
+        return boundaryX;
     }
 
-    @Override
-    // Effects: Invoked when a physical key is pressed down. Uses KeyCode, int output
-    public void keyPressed(KeyEvent e) {
+    public int getBoundaryY() {
+        return boundaryY;
     }
 
-    @Override
-    // Effects: Called whenever a button is released.
-    public void keyReleased(KeyEvent e) {
-        System.out.println("You released key char: " + e.getKeyChar());
-        System.out.println("You released key code: " + e.getKeyCode());
+    // Setter methods
+    public void setBoundaryX(int boundaryX) {
+        this.boundaryX = boundaryX;
+    }
+
+    public void setBoundaryY(int boundaryY) {
+        this.boundaryY = boundaryY;
     }
 }
