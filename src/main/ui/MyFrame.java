@@ -4,11 +4,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.border.Border;
 
 import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
+import ui.gui.Bats.InTheRangeOfBatLabel;
 import ui.gui.Creature.CreatureGUI;
 import ui.gui.StartUpScreen.StartUpScreen;
 
@@ -23,9 +25,12 @@ import java.awt.event.KeyListener;
 
 public class MyFrame extends JFrame implements ActionListener {
     
-    private JButton testButton;
     private int boundaryX = 1366;
     private int boundaryY = 768;
+
+    private JLayeredPane layeredPane;
+    private StartUpScreen startUpScreen;
+    private InTheRangeOfBatLabel inTheRangeOfBatLabel;
 
 
 
@@ -44,12 +49,17 @@ public class MyFrame extends JFrame implements ActionListener {
         this.setIconImage(logoImage.getImage());
         this.getContentPane().setBackground(Color.WHITE);
 
+        layeredPane = new JLayeredPane();
+        layeredPane.setBounds(0, 0, 1376, 768);
+        this.add(layeredPane, BorderLayout.CENTER);
+
         repaint();
     }
 
     // MODIFIES: this.
     // EFFECTS: Adds startUpScreen onto the frame.
     public void startUpScreenSetUp(StartUpScreen startUpScreen) {
+        this.startUpScreen = startUpScreen;
         this.add(startUpScreen, BorderLayout.CENTER);
         revalidate();
         repaint();
@@ -57,12 +67,21 @@ public class MyFrame extends JFrame implements ActionListener {
 
     // MODIFIES: this.
     // EFFECTS: Clears the startUpScreen. Adds Creature to the screen.
-    public void creatureSetUp() {
-        getContentPane().removeAll();
-        CreatureGUI creatureGUI = new CreatureGUI(new Creature(200,200), new Cave(1376,768));
-        this.add(creatureGUI, BorderLayout.CENTER);
+    public void creatureSetUp(Creature creature, Cave cave) {
+        this.remove(startUpScreen);
+        CreatureGUI creatureGUI = new CreatureGUI(creature, cave);
+        layeredPane.add(creatureGUI, Integer.valueOf(0));
         creatureGUI.setFocusable(true);
         creatureGUI.requestFocusInWindow();
+        revalidate();
+        repaint();
+    }
+
+    public void inTheRangeOfBatLabelSetUp() {
+        this.remove(startUpScreen);
+        this.inTheRangeOfBatLabel = new InTheRangeOfBatLabel();
+        layeredPane.add(inTheRangeOfBatLabel, Integer.valueOf(1));
+        inTheRangeOfBatLabel.setVisible(true);
         revalidate();
         repaint();
     }

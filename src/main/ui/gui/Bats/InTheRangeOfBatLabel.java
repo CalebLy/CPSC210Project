@@ -8,13 +8,18 @@ import java.awt.Graphics2D;
 
 public class InTheRangeOfBatLabel extends JLabel {
     
+    // EFFECTS: Creates the JLabel that appears when the creature is close to a bat.
     public InTheRangeOfBatLabel() {
-        this.setBounds(0, 344, 1376, 424);
+        this.setBounds(0, 334, 1376, 40);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.TOP);
+        this.setOpaque(false);
+       
     }
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: Creates a text that pops out with its shadow effect.
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;

@@ -31,7 +31,7 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
         this.setBounds(0, 0, 1376, 768);
         this.setFocusable(true);
         this.addKeyListener(this);
-        this.setBackground(Color.WHITE);
+        this.setOpaque(true);
         this.setLayout(null);
 
         creatureLeftIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureLeftResized.png");
