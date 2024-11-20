@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import model.characters.Creature;
 import model.rooms.Cave;
+import ui.Constants;
 
 public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
 
@@ -28,10 +29,10 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
     public CreatureGUI(Creature creature, Cave cave) {
         this.creature = creature;
         this.cave = cave;
-        this.setBounds(0, 0, 1376, 768);
+        this.setBounds(0, 0, Constants.screenWidth, Constants.screenHeight);
         this.setFocusable(true);
         this.addKeyListener(this);
-        this.setOpaque(true);
+        this.setOpaque(false);
         this.setLayout(null);
 
         creatureLeftIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureLeftResized.png");

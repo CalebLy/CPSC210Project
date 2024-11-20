@@ -6,10 +6,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class InTheRangeOfBatLabel extends JLabel {
+public class MouseEnterExitLabels extends JLabel {
     
     // EFFECTS: Creates the JLabel that appears when the creature is close to a bat.
-    public InTheRangeOfBatLabel() {
+    public MouseEnterExitLabels() {
         this.setBounds(0, 334, 1376, 40);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.TOP);
@@ -27,7 +27,7 @@ public class InTheRangeOfBatLabel extends JLabel {
         g2d.setColor(Color.GRAY);
         g2d.setFont(new Font("Arial", Font.BOLD, 30));
         
-        String text = "YOU ARE IN THE RANGE OF A BAT!";
+        String text = "YOU ARE IN THE RANGE OF THIS BAT!";
         int textWidth = g2d.getFontMetrics().stringWidth(text);
         int textHeight = g2d.getFontMetrics().getHeight();
 

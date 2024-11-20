@@ -1,36 +1,30 @@
 package ui;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.border.Border;
 
-import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
-import ui.gui.Bats.InTheRangeOfBatLabel;
+import ui.gui.Bats.BatsGUI;
+import ui.gui.Bats.MouseEnterExitLabels;
+import ui.gui.Cave.CaveGUI;
 import ui.gui.Creature.CreatureGUI;
 import ui.gui.StartUpScreen.StartUpScreen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class MyFrame extends JFrame implements ActionListener {
     
-    private int boundaryX = 1366;
-    private int boundaryY = 768;
+
 
     private JLayeredPane layeredPane;
     private StartUpScreen startUpScreen;
-    private InTheRangeOfBatLabel inTheRangeOfBatLabel;
+    private MouseEnterExitLabels inTheRangeOfBatLabel;
+    private BatsGUI batsGUI;
 
 
 
@@ -41,7 +35,7 @@ public class MyFrame extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(10,5 ));
         this.setResizable(false);
-        this.setSize(boundaryX, boundaryY);
+        this.setSize(Constants.screenWidth, Constants.screenHeight);
         this.setVisible(true);
 
         // Application Icon
@@ -50,7 +44,7 @@ public class MyFrame extends JFrame implements ActionListener {
         this.getContentPane().setBackground(Color.WHITE);
 
         layeredPane = new JLayeredPane();
-        layeredPane.setBounds(0, 0, 1376, 768);
+        layeredPane.setBounds(0, 0, Constants.screenWidth, Constants.screenHeight);
         this.add(layeredPane, BorderLayout.CENTER);
 
         repaint();
@@ -76,7 +70,7 @@ public class MyFrame extends JFrame implements ActionListener {
     public void creatureSetUp(Creature creature, Cave cave) {
         startUpScreenSetOff();
         CreatureGUI creatureGUI = new CreatureGUI(creature, cave);
-        layeredPane.add(creatureGUI, Integer.valueOf(0));
+        layeredPane.add(creatureGUI, Integer.valueOf(1));
         creatureGUI.setFocusable(true);
         creatureGUI.requestFocusInWindow();
         revalidate();
@@ -85,9 +79,9 @@ public class MyFrame extends JFrame implements ActionListener {
 
     // MODIFIES: this.
     // EFFECTS: Adds the InTheRangeOfBatLabel onto layeredPane.
-    public void inTheRangeOfBatLabelSetUp(InTheRangeOfBatLabel inTheRangeOfBatLabel) {
+    public void inTheRangeOfBatLabelSetUp(MouseEnterExitLabels inTheRangeOfBatLabel) {
         this.inTheRangeOfBatLabel = inTheRangeOfBatLabel;
-        layeredPane.add(inTheRangeOfBatLabel, Integer.valueOf(1));
+        layeredPane.add(inTheRangeOfBatLabel, Integer.valueOf(2));
         inTheRangeOfBatLabel.setVisible(true);
         revalidate();
         repaint();
@@ -95,29 +89,30 @@ public class MyFrame extends JFrame implements ActionListener {
 
     // MODIFIES: this.
     // EFFECTS: Removes the InTheRangeOfBatLabel from layeredPane.
-    public void inTheRangeOfBatLabelSetOff(InTheRangeOfBatLabel inTheRangeOfBatLabel) {
+    public void inTheRangeOfBatLabelSetOff(MouseEnterExitLabels inTheRangeOfBatLabel) {
         layeredPane.remove(inTheRangeOfBatLabel);
+    }
+
+    // MODIFIES: this.
+    // EFFECTS: Adds Bats to the screen.
+    public void batsSetUp(Creature creature, Cave cave) {
+        this.batsGUI = new BatsGUI(creature, cave, this, inTheRangeOfBatLabel);
+        layeredPane.add(batsGUI, Integer.valueOf(2));
+        batsGUI.setFocusable(true);
+        batsGUI.requestFocusInWindow();
+        revalidate();
+        repaint();
+    }
+
+    // MODIFIES: this.
+    // EFFECTS: Adds Cave background to the screen.
+    public void caveSetUp() {
+        CaveGUI cave = new CaveGUI();
+        layeredPane.add(cave, Integer.valueOf(0));
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
     }
 
-    // Getter methods
-    public int getBoundaryX() {
-        return boundaryX;
-    }
-
-    public int getBoundaryY() {
-        return boundaryY;
-    }
-
-    // Setter methods
-    public void setBoundaryX(int boundaryX) {
-        this.boundaryX = boundaryX;
-    }
-
-    public void setBoundaryY(int boundaryY) {
-        this.boundaryY = boundaryY;
-    }
 }

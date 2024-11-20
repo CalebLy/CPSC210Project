@@ -6,7 +6,7 @@ import java.util.Scanner;
 import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
-import ui.gui.Bats.InTheRangeOfBatLabel;
+import ui.gui.Bats.MouseEnterExitLabels;
 import ui.gui.StartUpScreen.StartUpScreen;
 
 // Constantly updates and checks for any changes that the user makes or actions the user takes
@@ -16,7 +16,7 @@ public class GameLoop {
     private boolean gameIsRunning = true;
     Scanner scanner = new Scanner(System.in);
     MyFrame myFrame = new MyFrame();
-    InTheRangeOfBatLabel inTheRangeOfBatLabel = new InTheRangeOfBatLabel();
+    MouseEnterExitLabels inTheRangeOfBatLabel = new MouseEnterExitLabels();
     
 
     // Effects: Loads previously played file, or a fresh file.
@@ -51,8 +51,9 @@ public class GameLoop {
     @SuppressWarnings("methodlength")
     public void defaultLoopOptions(Creature creature, Cave cave, GameState gs) {
         
-
+        myFrame.caveSetUp();
         myFrame.creatureSetUp(creature, cave);
+        myFrame.batsSetUp(creature, cave);
         defaultLoopPrintStatement(creature, cave); 
         
         if (creature.isInRange(cave) != -1) {

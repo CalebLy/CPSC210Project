@@ -2,7 +2,7 @@ package ui.gui.StartUpScreen;
 import javax.swing.*;
 
 import model.GameState;
-
+import ui.Constants;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -18,7 +18,7 @@ public class StartUpScreen extends JPanel implements ActionListener {
     final boolean[] result = {false};
 
     public StartUpScreen(GameState gs) {
-        this.setBounds(0, 0, 1376, 768);
+        this.setBounds(0, 0, Constants.screenWidth, Constants.screenHeight);
         this.setFocusable(true);
         this.setLayout(null);
 
