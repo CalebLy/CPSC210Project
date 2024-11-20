@@ -70,7 +70,7 @@ public class GameLoop {
     public void defaultLoopOptions(Creature creature, Cave cave, GameState gs) {
         
 
-
+        myFrame.creatureSetUp();
         defaultLoopPrintStatement(creature, cave);
         if (creature.isInRange(cave) != -1) {
             System.out.println("YOU ARE IN THE RANGE OF A BAT!");

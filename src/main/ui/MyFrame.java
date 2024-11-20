@@ -55,7 +55,8 @@ public class MyFrame extends JFrame implements ActionListener {
         repaint();
     }
 
-
+    // MODIFIES: this.
+    // EFFECTS: Clears the startUpScreen. Adds Creature to the screen.
     public void creatureSetUp() {
         getContentPane().removeAll();
         CreatureGUI creatureGUI = new CreatureGUI(new Creature(200,200), new Cave(1376,768));

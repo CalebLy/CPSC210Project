@@ -45,6 +45,7 @@ public class GameState {
             startUp = gameLoop.initialStartUp(this);
         } while (!startUp);
 
+        
         creature.startAttackCooldown(creature.getAttackCooldownTime(), cave);
         cave.spawnBats(cave.getMaxBats(), cave.getBatSpawnRate());
 
