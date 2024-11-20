@@ -1,12 +1,12 @@
 package ui;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
 import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
+import ui.gui.Bats.InTheRangeOfBatLabel;
 import ui.gui.StartUpScreen.StartUpScreen;
 
 // Constantly updates and checks for any changes that the user makes or actions the user takes
@@ -16,6 +16,7 @@ public class GameLoop {
     private boolean gameIsRunning = true;
     Scanner scanner = new Scanner(System.in);
     MyFrame myFrame = new MyFrame();
+    InTheRangeOfBatLabel inTheRangeOfBatLabel = new InTheRangeOfBatLabel();
     
 
     // Effects: Loads previously played file, or a fresh file.
@@ -70,11 +71,15 @@ public class GameLoop {
     public void defaultLoopOptions(Creature creature, Cave cave, GameState gs) {
         
 
-        myFrame.creatureSetUp();
-        defaultLoopPrintStatement(creature, cave);
+        myFrame.creatureSetUp(creature, cave);
+        defaultLoopPrintStatement(creature, cave); 
+        
         if (creature.isInRange(cave) != -1) {
-            System.out.println("YOU ARE IN THE RANGE OF A BAT!");
+            myFrame.inTheRangeOfBatLabelSetUp(inTheRangeOfBatLabel);
+        } else {
+            myFrame.inTheRangeOfBatLabelSetOff(inTheRangeOfBatLabel);
         }
+
         System.out.println("Type 'm' to open the Move menu" 
                         + "\nType 'i' to open the inventory"
                         + "\nType 'h' to try to hit a bat"
@@ -155,6 +160,7 @@ public class GameLoop {
                 break;
         }   
     }
+
 
     public boolean getGameIsRunning() {
         return this.gameIsRunning;

@@ -9,8 +9,6 @@ import org.json.JSONObject;
 import model.characters.*;
 import model.rooms.*;
 import ui.GameLoop;
-import ui.MyFrame;
-import ui.gui.Creature.CreatureGUI;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -45,7 +43,7 @@ public class GameState {
             startUp = gameLoop.initialStartUp(this);
         } while (!startUp);
 
-        
+
         creature.startAttackCooldown(creature.getAttackCooldownTime(), cave);
         cave.spawnBats(cave.getMaxBats(), cave.getBatSpawnRate());
 
@@ -77,8 +75,8 @@ public class GameState {
     }
 
     public GameState loadDefaultGameState() {
-        creature = new Creature(0,0);
-        cave = new Cave(30, 30);
+        creature = new Creature(200,400);
+        cave = new Cave(1376, 768);
         GameState gs = new GameState(creature, cave);
         return gs;
     }

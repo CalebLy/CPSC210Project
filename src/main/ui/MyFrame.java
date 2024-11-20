@@ -66,9 +66,15 @@ public class MyFrame extends JFrame implements ActionListener {
     }
 
     // MODIFIES: this.
+    // EFFECTS: Removes startUpScreen from the frame.
+    public void startUpScreenSetOff() {
+        this.remove(startUpScreen);
+    }
+
+    // MODIFIES: this.
     // EFFECTS: Clears the startUpScreen. Adds Creature to the screen.
     public void creatureSetUp(Creature creature, Cave cave) {
-        this.remove(startUpScreen);
+        startUpScreenSetOff();
         CreatureGUI creatureGUI = new CreatureGUI(creature, cave);
         layeredPane.add(creatureGUI, Integer.valueOf(0));
         creatureGUI.setFocusable(true);
@@ -77,13 +83,20 @@ public class MyFrame extends JFrame implements ActionListener {
         repaint();
     }
 
-    public void inTheRangeOfBatLabelSetUp() {
-        this.remove(startUpScreen);
-        this.inTheRangeOfBatLabel = new InTheRangeOfBatLabel();
+    // MODIFIES: this.
+    // EFFECTS: Adds the InTheRangeOfBatLabel onto layeredPane.
+    public void inTheRangeOfBatLabelSetUp(InTheRangeOfBatLabel inTheRangeOfBatLabel) {
+        this.inTheRangeOfBatLabel = inTheRangeOfBatLabel;
         layeredPane.add(inTheRangeOfBatLabel, Integer.valueOf(1));
         inTheRangeOfBatLabel.setVisible(true);
         revalidate();
         repaint();
+    }
+
+    // MODIFIES: this.
+    // EFFECTS: Removes the InTheRangeOfBatLabel from layeredPane.
+    public void inTheRangeOfBatLabelSetOff(InTheRangeOfBatLabel inTheRangeOfBatLabel) {
+        layeredPane.remove(inTheRangeOfBatLabel);
     }
 
     @Override

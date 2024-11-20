@@ -60,7 +60,7 @@ public class Creature extends GameObject {
         for (int i = 0; i < cave.getBats().size(); i++) {
             int differenceX = Math.abs(cave.getBats().get(i).getPosX() - this.getPosX());
             int differenceY = Math.abs(cave.getBats().get(i).getPosY() - this.getPosY());
-            if (differenceX <= 50 && differenceY <= 50) {
+            if (differenceX <= 50 && differenceY <= 25) {
                 return i;
             } 
         }
