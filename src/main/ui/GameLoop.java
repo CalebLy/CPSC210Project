@@ -29,25 +29,6 @@ public class GameLoop {
 
         return startUpScreen.getResult();
         
-        // System.out.println("\nType 'l' to load a saved file" 
-        //                 + "\nType 'f' to start a fresh save game.");
-        // String userChoice = scanner.nextLine();
-        // switch (userChoice.toLowerCase()) {
-        //     case "l":
-        //         try {
-        //             gs.loadGameState();
-        //             System.out.println("\nLoaded your game from " + JSON_STORE);
-        //         } catch (IOException e) {
-        //             System.out.println("\nUnable to read from file: " + JSON_STORE);
-        //         }
-        //         return true;
-        //     case "f":
-        //         gs.loadDefaultGameState();
-        //         return true;
-        //     default: 
-        //         System.out.println("Invalid input");
-        //         return false;
-        // }
     }
     
 

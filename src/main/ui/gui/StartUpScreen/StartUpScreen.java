@@ -55,6 +55,7 @@ public class StartUpScreen extends JPanel implements ActionListener {
         button.setFocusable(false);
         button.setBounds(leftX, topY, width, height);
         button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
         button.setVisible(true);
         this.add(button);
     }

@@ -10,10 +10,6 @@
                 "y": 525
             },
             {
-                "x": 1244,
-                "y": 400
-            },
-            {
                 "x": 180,
                 "y": 100
             },
@@ -28,8 +24,8 @@
         "height": 768
     },
     "creature": {
-        "attackCooldownTime": 4000,
-        "batwings": 0,
+        "attackCooldownTime": 0,
+        "batwings": 1,
         "x": 1244,
         "y": 400,
         "abilityToAttack": true,
