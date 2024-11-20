@@ -9,6 +9,7 @@ import javax.swing.border.Border;
 import model.characters.Creature;
 import model.rooms.Cave;
 import ui.gui.Creature.CreatureGUI;
+import ui.gui.StartUpScreen.StartUpScreen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -69,12 +70,13 @@ public class MyFrame extends JFrame implements ActionListener {
         this.setIconImage(logoImage.getImage());
         this.getContentPane().setBackground(Color.WHITE);
 
+
         CreatureGUI creatureGUI = new CreatureGUI(new Creature(200,200), new Cave(1376,768));
         this.add(creatureGUI, BorderLayout.CENTER);
         creatureGUI.setFocusable(true);
         creatureGUI.requestFocusInWindow();
 
-        // this.addKeyListener(this);
+        this.addKeyListener(this);
         
     }
 

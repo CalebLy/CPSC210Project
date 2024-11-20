@@ -72,16 +72,12 @@ public class GameState {
         GameState loadedGameState = jsonReader.read(); 
         this.creature = loadedGameState.creature;
         this.cave = loadedGameState.cave;
-        MyFrame myFrame = new MyFrame();
-        CreatureGUI creatureGUI = new CreatureGUI(creature, cave, myFrame);
     }
 
     public GameState loadDefaultGameState() {
         creature = new Creature(0,0);
         cave = new Cave(30, 30);
         GameState gs = new GameState(creature, cave);
-        MyFrame myFrame = new MyFrame();
-        CreatureGUI creatureGUI = new CreatureGUI(creature, cave, myFrame);
         return gs;
     }
     

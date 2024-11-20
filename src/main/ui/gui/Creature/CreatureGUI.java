@@ -34,10 +34,10 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
         this.setBackground(Color.WHITE);
         this.setLayout(null);
 
-        creatureLeftIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureLeft.png");
-        creatureFrontIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureFront.png");
-        creatureRightIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureRight (2).png");
-        creatureBackIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureBack (2).png");
+        creatureLeftIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureLeftResized.png");
+        creatureFrontIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureFrontResized.png");
+        creatureRightIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureRightResized.png");
+        creatureBackIcon = new ImageIcon("src\\main\\ui\\gui\\Creature\\CreatureBackResized.png");
 
         // Default orientation (initial) 
         currentCreatureOrientation = creatureFrontIcon.getImage();
@@ -92,25 +92,6 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
-
-        // // Get original image dimensions
-        // int originalWidth = currentCreatureOrientation.getWidth(this);
-        // int originalHeight = currentCreatureOrientation.getHeight(this);
-
-        // // Calculate the new dimensions while keeping the aspect ratio
-        // double aspectRatio = (double) originalWidth / originalHeight;
-        // int newWidth = this.getWidth();
-        // int newHeight = (int) (this.getWidth() / aspectRatio);
-
-        // // If the new height is larger than the panel, adjust the width instead
-        // if (newHeight > this.getHeight()) {
-        //     newHeight = this.getHeight();
-        //     newWidth = (int) (this.getHeight() * aspectRatio);
-        // }
-
-        // Scale the image
-        Image scaledImage = currentCreatureOrientation.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
-
         g2D.drawImage(currentCreatureOrientation, creature.getPosX(), creature.getPosY(), null);
     }
     
