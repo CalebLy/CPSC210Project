@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
 
+import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
 import ui.gui.Creature.CreatureGUI;
@@ -22,13 +23,14 @@ import java.awt.event.KeyListener;
 
 public class MyFrame extends JFrame implements ActionListener {
     
-    JButton testButton;
-    int boundaryX = 1366;
-    int boundaryY = 768;
+    private JButton testButton;
+    private int boundaryX = 1366;
+    private int boundaryY = 768;
+    private GameState gs;
 
 
 
-    public MyFrame() {
+    public MyFrame(GameState gs) {
 
         // testButton = new JButton();
 
@@ -70,14 +72,15 @@ public class MyFrame extends JFrame implements ActionListener {
         this.setIconImage(logoImage.getImage());
         this.getContentPane().setBackground(Color.WHITE);
 
+        this.gs = gs;
+        StartUpScreen startUpScreen = new StartUpScreen(gs);
+        this.add(startUpScreen, BorderLayout.CENTER);
 
-        CreatureGUI creatureGUI = new CreatureGUI(new Creature(200,200), new Cave(1376,768));
-        this.add(creatureGUI, BorderLayout.CENTER);
-        creatureGUI.setFocusable(true);
-        creatureGUI.requestFocusInWindow();
-
-        this.addKeyListener(this);
-        
+        // CreatureGUI creatureGUI = new CreatureGUI(new Creature(200,200), new Cave(1376,768));
+        // this.add(creatureGUI, BorderLayout.CENTER);
+        // creatureGUI.setFocusable(true);
+        // creatureGUI.requestFocusInWindow();
+        repaint();
     }
 
     @Override

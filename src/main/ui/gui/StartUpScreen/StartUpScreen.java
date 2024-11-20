@@ -1,26 +1,56 @@
 package ui.gui.StartUpScreen;
 import javax.swing.*;
 
-import ui.GameLoop;
+import model.GameState;
+
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.*;  
+import java.awt.event.*;
+import java.io.IOException;  
 
-public class StartUpScreen extends JPanel implements MouseListener, ActionListener {
+public class StartUpScreen extends JPanel implements ActionListener {
 
-    private GameLoop gameLoop;
+    private GameState gs;
     private ImageIcon startUpScreenImage;
+    private JButton newGameButton;
+    private JButton loadGameButton;
+    private static final String JSON_STORE = "./data/gamestate.json";
 
-    public StartUpScreen(GameLoop gameLoop) {
-        this.gameLoop = gameLoop;
-        this.addMouseListener(this);
+    public StartUpScreen(GameState gs) {
+        this.gs = gs;
         this.setBounds(0, 0, 1376, 768);
         this.setFocusable(true);
 
         startUpScreenImage = new ImageIcon("src\\main\\ui\\gui\\StartUpScreen\\StartUpScreen Cropped Resized.png");
         repaint();
 
+        newGameButton = new JButton();
+        loadGameButton = new JButton();
+        gameButtonInitialization(newGameButton, 455, 270, 450, 70);
+        gameButtonInitialization(loadGameButton, 460, 390, 440, 70);
+
+        newGameButton.addActionListener(e -> {
+            gs.loadDefaultGameState();
+        });
+
+        loadGameButton.addActionListener(e -> {
+            try {
+                gs.loadGameState();
+                System.out.println("\nLoaded your game from " + JSON_STORE);
+            } catch (IOException i) {
+                System.out.println("\nUnable to read from file: " + JSON_STORE);
+            }
+        });
+    }
+
+    // MODIFIES: this.
+    // EFFECTS: Initializes a JButton and sets its bounds accordingly. Adds button to this.
+    public void gameButtonInitialization(JButton button, int leftX, int topY, int width, int height) {
+        button.setFocusable(false);
+        button.setBounds(leftX, topY, width, height);
+        button.setContentAreaFilled(false);
+        this.add(button);
     }
 
 
@@ -32,37 +62,7 @@ public class StartUpScreen extends JPanel implements MouseListener, ActionListen
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
-    }
-
-    @Override
-    // Effects: Draws the creature
+    // Effects: Draws the startUpScreen panel.
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;

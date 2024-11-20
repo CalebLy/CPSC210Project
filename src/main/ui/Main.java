@@ -22,11 +22,10 @@ import ui.gui.Bats.BatsGUI;
 public class Main {
     public static void main(String[] args) throws Exception {
        // UI TESTING AREA // 
-        MyFrame myFrame = new MyFrame();
-        BatsGUI testBat = new BatsGUI();
+        // BatsGUI testBat = new BatsGUI();
 
-        myFrame.add(testBat);
-        myFrame.repaint();
+        // myFrame.add(testBat);
+        // myFrame.repaint();
 
    
 
@@ -37,6 +36,7 @@ public class Main {
 
         try {
             GameState gs = new GameState();
+            MyFrame myFrame = new MyFrame(gs);
             gs.startGame();
         } catch (FileNotFoundException f) {
             System.err.println("Error while starting game: file not found");
