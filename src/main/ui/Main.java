@@ -36,7 +36,6 @@ public class Main {
 
         try {
             GameState gs = new GameState();
-            MyFrame myFrame = new MyFrame(gs);
             gs.startGame();
         } catch (FileNotFoundException f) {
             System.err.println("Error while starting game: file not found");

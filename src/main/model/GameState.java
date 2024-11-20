@@ -28,6 +28,7 @@ public class GameState {
     public GameState(Creature creature, Cave cave) {
         this.creature = creature;
         this.cave = cave;
+        
     }
 
     public GameState() {

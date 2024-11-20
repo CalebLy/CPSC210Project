@@ -7,6 +7,7 @@ import java.util.Scanner;
 import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
+import ui.gui.StartUpScreen.StartUpScreen;
 
 // Constantly updates and checks for any changes that the user makes or actions the user takes
 public class GameLoop {
@@ -14,29 +15,38 @@ public class GameLoop {
     private static final String JSON_STORE = "./data/gamestate.json";
     private boolean gameIsRunning = true;
     Scanner scanner = new Scanner(System.in);
+    MyFrame myFrame = new MyFrame();
     
 
     // Effects: Loads previously played file, or a fresh file.
     public boolean initialStartUp(GameState gs) {
-        System.out.println("\nType 'l' to load a saved file" 
-                        + "\nType 'f' to start a fresh save game.");
-        String userChoice = scanner.nextLine();
-        switch (userChoice.toLowerCase()) {
-            case "l":
-                try {
-                    gs.loadGameState();
-                    System.out.println("\nLoaded your game from " + JSON_STORE);
-                } catch (IOException e) {
-                    System.out.println("\nUnable to read from file: " + JSON_STORE);
-                }
-                return true;
-            case "f":
-                gs.loadDefaultGameState();
-                return true;
-            default: 
-                System.out.println("Invalid input");
-                return false;
-        }
+
+        StartUpScreen startUpScreen = new StartUpScreen(gs);
+        do {
+            myFrame.startUpScreenSetUp(startUpScreen);
+        } while (!startUpScreen.getResult());
+
+        return startUpScreen.getResult();
+        
+        // System.out.println("\nType 'l' to load a saved file" 
+        //                 + "\nType 'f' to start a fresh save game.");
+        // String userChoice = scanner.nextLine();
+        // switch (userChoice.toLowerCase()) {
+        //     case "l":
+        //         try {
+        //             gs.loadGameState();
+        //             System.out.println("\nLoaded your game from " + JSON_STORE);
+        //         } catch (IOException e) {
+        //             System.out.println("\nUnable to read from file: " + JSON_STORE);
+        //         }
+        //         return true;
+        //     case "f":
+        //         gs.loadDefaultGameState();
+        //         return true;
+        //     default: 
+        //         System.out.println("Invalid input");
+        //         return false;
+        // }
     }
     
 

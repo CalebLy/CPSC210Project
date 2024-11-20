@@ -26,84 +26,49 @@ public class MyFrame extends JFrame implements ActionListener {
     private JButton testButton;
     private int boundaryX = 1366;
     private int boundaryY = 768;
-    private GameState gs;
 
 
 
-    public MyFrame(GameState gs) {
-
-        // testButton = new JButton();
-
-        // // Adjusting properties of Button
-        // testButton.setFocusable(false);
-        // testButton.setBounds(200, 200, 350, 350);
-        // testButton.addActionListener(e -> {
-        //     System.out.println("test");
-        //     testButton.setEnabled(false);
-        // });
-
-        // // Adding Icon to Button
-        // ImageIcon testButtonIcon = new ImageIcon("src\\main\\ui\\gui\\Icon\\Cropped New Logo.png");
-        // testButton.setIcon(testButtonIcon);
-        
-        // // Text on Button
-        // testButton.setText("TestButton");
-        // testButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
-
-        // // Changing orientation of the text
-        // testButton.setHorizontalTextPosition(JButton.CENTER);
-        // testButton.setVerticalTextPosition(JButton.BOTTOM);
-        // testButton.setIconTextGap(10);
-        
-        // this.add(testButton);
+    public MyFrame() {
 
         // Frame Properties
         this.setTitle("Frankenstein Adaptation");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(10,5 ));
         this.setResizable(false);
-
         this.setSize(boundaryX, boundaryY);
         this.setVisible(true);
-
 
         // Application Icon
         ImageIcon logoImage = new ImageIcon("src\\main\\ui\\gui\\Icon\\Final Cropped Resized Logo.png");
         this.setIconImage(logoImage.getImage());
         this.getContentPane().setBackground(Color.WHITE);
 
-        this.gs = gs;
-        StartUpScreen startUpScreen = new StartUpScreen(gs);
-        this.add(startUpScreen, BorderLayout.CENTER);
+        repaint();
+    }
 
-        // CreatureGUI creatureGUI = new CreatureGUI(new Creature(200,200), new Cave(1376,768));
-        // this.add(creatureGUI, BorderLayout.CENTER);
-        // creatureGUI.setFocusable(true);
-        // creatureGUI.requestFocusInWindow();
+    // MODIFIES: this.
+    // EFFECTS: Adds startUpScreen onto the frame.
+    public void startUpScreenSetUp(StartUpScreen startUpScreen) {
+        this.add(startUpScreen, BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+
+
+    public void creatureSetUp() {
+        getContentPane().removeAll();
+        CreatureGUI creatureGUI = new CreatureGUI(new Creature(200,200), new Cave(1376,768));
+        this.add(creatureGUI, BorderLayout.CENTER);
+        creatureGUI.setFocusable(true);
+        creatureGUI.requestFocusInWindow();
+        revalidate();
         repaint();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
     }
-
-    // @Override   
-    // // Effects: Invoked when a key is typed. Uses KeyChar, char output
-    // public void keyTyped(KeyEvent e) {
-
-    // }
-
-    // @Override
-    // // Effects: Invoked when a physical key is pressed down. Uses KeyCode, int output
-    // public void keyPressed(KeyEvent e) {
-    // }
-
-    // @Override
-    // // Effects: Called whenever a button is released.
-    // public void keyReleased(KeyEvent e) {
-    //     System.out.println("You released key char: " + e.getKeyChar());
-    //     System.out.println("You released key code: " + e.getKeyCode());
-    // }
 
     // Getter methods
     public int getBoundaryX() {
