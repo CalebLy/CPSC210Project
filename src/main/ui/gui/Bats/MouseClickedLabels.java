@@ -24,7 +24,7 @@ public class MouseClickedLabels extends JLabel{
         this.creature = creature;
         this.cave = cave;
         this.condition = condition;
-        this.setBounds(0, 334, 1376, 40);
+        this.setBounds(creature.getPosX(), creature.getPosY(), 600, 80);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.TOP);
         this.setOpaque(false);
@@ -38,7 +38,7 @@ public class MouseClickedLabels extends JLabel{
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(Color.GRAY);
-        g2d.setFont(new Font("Arial", Font.BOLD, 30));
+        g2d.setFont(new Font("Arial", Font.BOLD, 15));
 
         textCondition(condition);
 
@@ -49,8 +49,6 @@ public class MouseClickedLabels extends JLabel{
         int y = (this.getHeight() + textHeight) / 2 - 2;
         g2d.drawString(text, x, y);
 
-        g2d.setColor(Color.RED);
-        g2d.drawString(text, (this.getWidth() - textWidth) / 2, (this.getHeight() + textHeight) / 2);
     }
 
 
@@ -68,6 +66,7 @@ public class MouseClickedLabels extends JLabel{
                 this.text = ("\nOh no! Looks like you're not within 1 block of the bat!" 
                           + " Bat elimination has failed.");
                 break;
+            // ATTACK_ON_COOLDOWN
             case 3:
                 this.text = ("\n\nOh no! Looks like you're currently fatigued!"
                            + " Please wait until your weaponCooldown is finished: " 

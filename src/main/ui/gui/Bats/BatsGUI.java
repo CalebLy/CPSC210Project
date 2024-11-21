@@ -35,12 +35,9 @@ public class BatsGUI extends JPanel implements MouseListener {
     private Cave cave;
     private MyFrame myFrame;
     private MouseEnterExitLabels mouseEnterExitLabels;
-    public static enum mouseExitedStatus {
-        CANHIT,
-        NOTINRANGE,
-        ATTACKONCOOLDOWN,
-    };
 
+
+    private MouseClickedLabels mouseClickedLabels;
     private List<Point> batPositions; // Store positions of all bats
     private List<JButton> batButtons; // Store buttons for all bats
 
@@ -48,7 +45,6 @@ public class BatsGUI extends JPanel implements MouseListener {
 
 
     public BatsGUI(Creature creature, Cave cave) {
-        mouseEnterExitLabels = new MouseEnterExitLabels();
         this.creature = creature;
         this.cave = cave;
         batIcon = new ImageIcon("src\\main\\ui\\gui\\Bats\\Bat.png");
@@ -105,9 +101,32 @@ public class BatsGUI extends JPanel implements MouseListener {
 
 
     @Override
+    // MODIFIES: this, Creature, Cave, Bats.
+    // EFFECTS: On mouse click, either attacks a bat that the user clicks, or doesn't. mouseClickedLabel is set to visible with text
+    //          set according to whether the hit succeeded, and why. 
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
+
+        if (creature.canAttack(cave)) {
+            creature.attack(cave);
+            mouseClickedLabels = new MouseClickedLabels(creature, cave, 1);
+            this.add(mouseClickedLabels);
+        } else if (creature.isInRange(cave) == -1) {
+            mouseClickedLabels = new MouseClickedLabels(creature, cave, 1);
+            this.add(mouseClickedLabels);
+        } else if (creature.getAttackCooldown() == false) {
+            mouseClickedLabels = new MouseClickedLabels(creature, cave, 1);
+            this.add(mouseClickedLabels);
+        }
+
+        new Thread(() -> {
+            try {
+                mouseClickedLabels.setVisible(true);
+                Thread.sleep(2000);
+                mouseClickedLabels.setVisible(false);
+            } catch (InterruptedException i) {
+                i.printStackTrace();
+            }
+        }).start();
     }
 
 
@@ -122,15 +141,24 @@ public class BatsGUI extends JPanel implements MouseListener {
 
 
     @Override
+    // MODIFIES: this.mouseEnterExitLabels.
+    // EFFECTS: If a bat is in range when a mouse enters a bat, mouseEnterExitLabel's visibility is set to true.
     public void mouseEntered(MouseEvent e) {
-
+        if (creature.isInRange(cave) != -1) {
+            mouseEnterExitLabels = new MouseEnterExitLabels(creature, cave);
+            this.add(mouseEnterExitLabels);
+            mouseEnterExitLabels.setVisible(true);
+        }
     }
 
 
     @Override
+    // MODIFIES: this.mouseEnterExitLabels.
+    // EFFECTS: Removes the mouseEnterExitLabel's visibility, if it was visible, when the mouse exits a bat.
     public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
+        if (mouseEnterExitLabels.isVisible()) {
+            mouseEnterExitLabels.setVisible(false);
+        }
     }
 
 }
