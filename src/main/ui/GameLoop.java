@@ -16,7 +16,6 @@ public class GameLoop {
     private boolean gameIsRunning = true;
     Scanner scanner = new Scanner(System.in);
     MyFrame myFrame = new MyFrame();
-    MouseEnterExitLabels inTheRangeOfBatLabel = new MouseEnterExitLabels();
     
 
     // Effects: Loads previously played file, or a fresh file.
@@ -52,15 +51,11 @@ public class GameLoop {
     public void defaultLoopOptions(Creature creature, Cave cave, GameState gs) {
         
         myFrame.caveSetUp();
-        myFrame.creatureSetUp(creature, cave);
         myFrame.batsSetUp(creature, cave);
+        myFrame.creatureSetUp(creature, cave);
+
         defaultLoopPrintStatement(creature, cave); 
         
-        if (creature.isInRange(cave) != -1) {
-            myFrame.inTheRangeOfBatLabelSetUp(inTheRangeOfBatLabel);
-        } else {
-            myFrame.inTheRangeOfBatLabelSetOff(inTheRangeOfBatLabel);
-        }
 
         System.out.println("Type 'm' to open the Move menu" 
                         + "\nType 'i' to open the inventory"

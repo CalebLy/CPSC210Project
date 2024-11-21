@@ -23,9 +23,9 @@ public class MouseEnterExitLabels extends JLabel {
     public MouseEnterExitLabels(Creature creature, Cave cave) {
         this.creature = creature;
         this.cave = cave;
-        currentBatCoords = new Point();
+        currentBatCoords = new Point(0,0);
         batInRangeCoordinateGetter();
-        this.setBounds(currentBatCoords.x, currentBatCoords.y + 15, 300, 40);
+        this.setBounds(currentBatCoords.x, currentBatCoords.y + 15, 500, 40);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.TOP);
         this.setOpaque(false);

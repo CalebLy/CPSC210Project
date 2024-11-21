@@ -84,8 +84,8 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
     @Override
     // Effects: Called whenever a button is released.
     public void keyReleased(KeyEvent e) {
-        System.out.println("You released key char: " + e.getKeyChar());
-        System.out.println("You released key code: " + e.getKeyCode());
+        // System.out.println("You released key char: " + e.getKeyChar());
+        // System.out.println("You released key code: " + e.getKeyCode());
     }
 
     @Override

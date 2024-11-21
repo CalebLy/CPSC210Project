@@ -3,6 +3,7 @@ package ui;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import javax.swing.Timer;
 
 import model.characters.Creature;
 import model.rooms.Cave;
@@ -47,7 +48,8 @@ public class MyFrame extends JFrame implements ActionListener {
         layeredPane.setBounds(0, 0, Constants.screenWidth, Constants.screenHeight);
         this.add(layeredPane, BorderLayout.CENTER);
 
-        repaint();
+        Timer timer = new Timer(16, e -> batsGUI.repaint());
+        //frameRefresh();
     }
 
     // MODIFIES: this.
@@ -77,26 +79,11 @@ public class MyFrame extends JFrame implements ActionListener {
         repaint();
     }
 
-    // MODIFIES: this.
-    // EFFECTS: Adds the InTheRangeOfBatLabel onto layeredPane.
-    public void inTheRangeOfBatLabelSetUp(MouseEnterExitLabels inTheRangeOfBatLabel) {
-        this.inTheRangeOfBatLabel = inTheRangeOfBatLabel;
-        layeredPane.add(inTheRangeOfBatLabel, Integer.valueOf(2));
-        inTheRangeOfBatLabel.setVisible(true);
-        revalidate();
-        repaint();
-    }
-
-    // MODIFIES: this.
-    // EFFECTS: Removes the InTheRangeOfBatLabel from layeredPane.
-    public void inTheRangeOfBatLabelSetOff(MouseEnterExitLabels inTheRangeOfBatLabel) {
-        layeredPane.remove(inTheRangeOfBatLabel);
-    }
 
     // MODIFIES: this.
     // EFFECTS: Adds Bats to the screen.
     public void batsSetUp(Creature creature, Cave cave) {
-        this.batsGUI = new BatsGUI(creature, cave, this, inTheRangeOfBatLabel);
+        this.batsGUI = new BatsGUI(creature, cave);
         layeredPane.add(batsGUI, Integer.valueOf(2));
         batsGUI.setFocusable(true);
         batsGUI.requestFocusInWindow();
@@ -114,5 +101,19 @@ public class MyFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
     }
+
+    // public void frameRefresh() {
+
+    //     new Thread(() -> {
+    //         while (this.isVisible()) {
+    //             try {
+    //                 Thread.sleep(30);
+
+    //             } catch (InterruptedException e) {
+    //                 System.err.println("frameRefresh interrupted" + e.getMessage());
+    //             }
+    //         }
+    //     }).start();
+    // }
 
 }
