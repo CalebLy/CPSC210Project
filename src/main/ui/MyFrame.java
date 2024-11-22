@@ -121,7 +121,6 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
     // EFFECTS: Keylistener that can toggle the escapeMenu or move the creature.
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("You released key char: " + e.getKeyChar());
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT: 
             case KeyEvent.VK_UP:

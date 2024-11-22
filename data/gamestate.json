@@ -2,24 +2,24 @@
     "cave": {
         "Bats": [
             {
-                "x": 1171,
-                "y": 307
+                "x": 235,
+                "y": 706
             },
             {
-                "x": 1285,
-                "y": 145
+                "x": 619,
+                "y": 33
             },
             {
-                "x": 266,
-                "y": 136
+                "x": 1196,
+                "y": 300
             },
             {
-                "x": 650,
-                "y": 579
+                "x": 182,
+                "y": 449
             },
             {
-                "x": 951,
-                "y": 445
+                "x": 557,
+                "y": 383
             }
         ],
         "batSpawnRate": 5000,
@@ -28,10 +28,10 @@
         "height": 768
     },
     "creature": {
-        "attackCooldownTime": 4000,
-        "batwings": 2,
-        "x": 670,
-        "y": 285,
+        "attackCooldownTime": 0,
+        "batwings": 1,
+        "x": 720,
+        "y": 110,
         "abilityToAttack": true,
         "attackCooldown": true
     }

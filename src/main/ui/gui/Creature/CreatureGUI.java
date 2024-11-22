@@ -25,10 +25,12 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
     private ImageIcon creatureRightIcon;
     private ImageIcon creatureBackIcon;
     private Image currentCreatureOrientation;
+    private int speed;
 
     public CreatureGUI(Creature creature, Cave cave) {
         this.creature = creature;
         this.cave = cave;
+        this.speed = 10;
         this.setBounds(0, 0, Constants.screenWidth, Constants.screenHeight);
         this.setFocusable(true);
         this.addKeyListener(this);
@@ -61,19 +63,19 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT: 
                 currentCreatureOrientation = creatureLeftIcon.getImage();
-                creature.move("left", 5, cave);
+                creature.move("left", speed, cave);
                 break;
             case KeyEvent.VK_UP:
                 currentCreatureOrientation = creatureBackIcon.getImage();
-                creature.move("down", 5, cave);
+                creature.move("down", speed, cave);
                 break;
             case KeyEvent.VK_RIGHT:
                 currentCreatureOrientation = creatureRightIcon.getImage();
-                creature.move("right", 5, cave);
+                creature.move("right", speed, cave);
                 break;
             case KeyEvent.VK_DOWN:
                 currentCreatureOrientation = creatureFrontIcon.getImage();
-                creature.move("up", 5, cave);
+                creature.move("up", speed, cave);
                 break;
         }
         repaint();
