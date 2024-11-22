@@ -6,20 +6,12 @@
                 "y": 706
             },
             {
-                "x": 619,
-                "y": 33
+                "x": 555,
+                "y": 212
             },
             {
-                "x": 1196,
-                "y": 300
-            },
-            {
-                "x": 182,
-                "y": 449
-            },
-            {
-                "x": 557,
-                "y": 383
+                "x": 636,
+                "y": 49
             }
         ],
         "batSpawnRate": 5000,
@@ -28,10 +20,10 @@
         "height": 768
     },
     "creature": {
-        "attackCooldownTime": 0,
-        "batwings": 1,
-        "x": 720,
-        "y": 110,
+        "attackCooldownTime": 4000,
+        "batwings": 17,
+        "x": 1180,
+        "y": 450,
         "abilityToAttack": true,
         "attackCooldown": true
     }

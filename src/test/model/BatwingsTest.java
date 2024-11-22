@@ -52,23 +52,17 @@ public class BatwingsTest {
         assertEquals(4500, caveTest.getBatSpawnRate());
 
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 9; i++) {
             creatureTest.getInventory().getBatwings().addBatwing();
             creatureTest.getInventory().getBatwings().useBatwing(creatureTest, caveTest);
         }
 
         assertEquals(0, creatureTest.getInventory().getBatwings().getAmount());
-        assertEquals(1500, creatureTest.getAttackCooldownTime());
-        assertEquals(10, caveTest.getMaxBats());
-        assertEquals(2500, caveTest.getBatSpawnRate());
+        assertEquals(0, creatureTest.getAttackCooldownTime());
+        assertEquals(15, caveTest.getMaxBats());
+        assertEquals(0, caveTest.getBatSpawnRate());
 
 
-        creatureTest.getInventory().getBatwings().addBatwing();
-        creatureTest.getInventory().getBatwings().useBatwing(creatureTest, caveTest);
 
-        assertEquals(1, creatureTest.getInventory().getBatwings().getAmount());
-        assertEquals(1500, creatureTest.getAttackCooldownTime());
-        assertEquals(10, caveTest.getMaxBats());
-        assertEquals(2500, caveTest.getBatSpawnRate());
     }
 }

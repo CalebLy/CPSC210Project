@@ -29,10 +29,17 @@ public class Batwings extends GameObject {
     //          and number of Batwings will decrease by one, then it will return true.
     //          If there doesn't exist a Batwing, it will return false.
     public boolean useBatwing(Creature creature, Cave cave) {
-        if (amount > 0 && cave.getMaxBats() < 10) {
-            creature.setAttackCooldownTime(500);
+        if (amount > 0) {
+            if (creature.getAttackCooldownTime() > 0) {
+                creature.setAttackCooldownTime(500);
+            }
             cave.stopSpawningBats();
-            cave.spawnBats(cave.getMaxBats() + 1, cave.getBatSpawnRate() - 500);
+            if (cave.getBatSpawnRate() > 0) {
+                cave.spawnBats(cave.getMaxBats() + 1, cave.getBatSpawnRate() - 500);
+            } else {
+                cave.spawnBats(cave.getMaxBats() + 1, cave.getBatSpawnRate());
+            }  
+            
             this.removeObject();
             return true;
         } else {

@@ -1,9 +1,8 @@
 package model.characters;
 
 import model.GameObject;
+import model.items.Inventory;
 import model.rooms.Cave;
-import ui.inventory.Inventory;
-
 
 import org.json.JSONObject;
 
