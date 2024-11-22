@@ -3,14 +3,14 @@
         "Bats": [],
         "batSpawnRate": 5000,
         "maxBats": 5,
-        "width": 30,
-        "height": 30
+        "width": 1376,
+        "height": 768
     },
     "creature": {
         "attackCooldownTime": 4000,
         "batwings": 0,
-        "x": 0,
-        "y": 0,
+        "x": 200,
+        "y": 400,
         "abilityToAttack": false,
         "attackCooldown": true
     }

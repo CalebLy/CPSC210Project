@@ -41,10 +41,10 @@ class JsonWriterTest {
 
             JsonReader reader = new JsonReader("./data/testReaderDefaultGameState.json");
             gs = reader.read();
-            assertEquals(0, gs.getCreature().getPosX());
-            assertEquals(0, gs.getCreature().getPosY());
-            assertEquals(30, gs.getCave().getHeight());
-            assertEquals(30, gs.getCave().getWidth());
+            assertEquals(200, gs.getCreature().getPosX());
+            assertEquals(400, gs.getCreature().getPosY());
+            assertEquals(768, gs.getCave().getHeight());
+            assertEquals(1376, gs.getCave().getWidth());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -76,8 +76,8 @@ class JsonWriterTest {
             // gs = reader.read();
             assertEquals(0, gs.getCreature().getPosX());
             assertEquals(6, gs.getCreature().getPosY());
-            assertEquals(30, gs.getCave().getHeight());
-            assertEquals(30, gs.getCave().getWidth());
+            assertEquals(768, gs.getCave().getHeight());
+            assertEquals(1376, gs.getCave().getWidth());
 
             assertEquals(4500, gs.getCave().getBatSpawnRate());
             assertEquals(6, gs.getCave().getMaxBats());
