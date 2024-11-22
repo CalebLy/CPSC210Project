@@ -55,25 +55,23 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
 
     }
 
-    @Override
-    // Effects: Invoked when a physical key is pressed down. Uses KeyCode, int output
-    //          Moves and updates the creature's position 
-    public void keyPressed(KeyEvent e) {
+    // Effects: Invoked when a physical key is pressed down (Method call sent from Frame).
+    //          Uses KeyCode, int output. Moves and updates the creature's position 
+    public void moveCreatureGUI(KeyEvent e) {
         switch (e.getKeyCode()) {
-            // 37, 38, 39, 40 = left, up, right, down
-            case 37: 
+            case KeyEvent.VK_LEFT: 
                 currentCreatureOrientation = creatureLeftIcon.getImage();
                 creature.move("left", 5, cave);
                 break;
-            case 38:
+            case KeyEvent.VK_UP:
                 currentCreatureOrientation = creatureBackIcon.getImage();
                 creature.move("down", 5, cave);
                 break;
-            case 39:
+            case KeyEvent.VK_RIGHT:
                 currentCreatureOrientation = creatureRightIcon.getImage();
                 creature.move("right", 5, cave);
                 break;
-            case 40:
+            case KeyEvent.VK_DOWN:
                 currentCreatureOrientation = creatureFrontIcon.getImage();
                 creature.move("up", 5, cave);
                 break;
@@ -94,6 +92,10 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         g2D.drawImage(currentCreatureOrientation, creature.getPosX(), creature.getPosY(), null);
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
     }
     
 }

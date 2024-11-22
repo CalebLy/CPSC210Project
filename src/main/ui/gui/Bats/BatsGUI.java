@@ -3,6 +3,7 @@ package ui.gui.Bats;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -60,6 +61,8 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
 
         batPositions = new ArrayList<>();
         batSpawnGUI(cave);
+        Timer timer = new Timer(300, e -> batSpawnGUI(cave));
+        timer.start();
     }
 
 
@@ -108,7 +111,7 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
     @Override
     // MODIFIES: this, Creature, Cave, Bats.
     // EFFECTS: On mouse click, either attacks a bat that the user clicks, or doesn't. mouseClickedLabel is set to visible with text
-    //          set according to whether the hit succeeded, and why. 
+    //          set according to whether the hit succeeded, and why. Prevents spamming left click.
     public void mouseClicked(MouseEvent e) {
 
         long currentTime = System.currentTimeMillis();

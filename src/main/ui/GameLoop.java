@@ -7,6 +7,7 @@ import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
 import ui.gui.Bats.MouseEnterExitLabels;
+import ui.gui.EscapeMenu.EscapeMenu;
 import ui.gui.StartUpScreen.StartUpScreen;
 
 // Constantly updates and checks for any changes that the user makes or actions the user takes
@@ -16,6 +17,7 @@ public class GameLoop {
     private boolean gameIsRunning = true;
     Scanner scanner = new Scanner(System.in);
     MyFrame myFrame = new MyFrame();
+    EscapeMenu escapeMenu;
     
 
     // Effects: Loads previously played file, or a fresh file.
@@ -49,10 +51,13 @@ public class GameLoop {
     // Effects: controls what happens when the user tries to do any of the default options
     @SuppressWarnings("methodlength")
     public void defaultLoopOptions(Creature creature, Cave cave, GameState gs) {
-        
+
+        escapeMenu = new EscapeMenu(gs, this, myFrame);
         myFrame.caveSetUp();
         myFrame.batsSetUp(creature, cave);
+        myFrame.escapeMenuSetUp(escapeMenu);
         myFrame.creatureSetUp(creature, cave);
+        
 
         defaultLoopPrintStatement(creature, cave); 
         
