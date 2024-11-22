@@ -12,7 +12,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
-public class MouseEnterExitLabels extends JLabel {
+public class MouseBatEnterExitLabels extends JLabel {
 
 
     private Creature creature;
@@ -20,7 +20,7 @@ public class MouseEnterExitLabels extends JLabel {
     private Point currentBatCoords;
 
     // EFFECTS: Creates the JLabel that appears when the creature is close to a bat.
-    public MouseEnterExitLabels(Creature creature, Cave cave) {
+    public MouseBatEnterExitLabels(Creature creature, Cave cave) {
         this.creature = creature;
         this.cave = cave;
         currentBatCoords = new Point(0,0);

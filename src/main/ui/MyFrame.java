@@ -9,7 +9,7 @@ import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
 import ui.gui.Bats.BatsGUI;
-import ui.gui.Bats.MouseEnterExitLabels;
+import ui.gui.Bats.MouseBatEnterExitLabels;
 import ui.gui.Cave.CaveGUI;
 import ui.gui.Creature.CreatureGUI;
 import ui.gui.EscapeMenu.EscapeMenu;
@@ -28,7 +28,7 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
 
     private JLayeredPane layeredPane;
     private StartUpScreen startUpScreen;
-    private MouseEnterExitLabels inTheRangeOfBatLabel;
+    private MouseBatEnterExitLabels inTheRangeOfBatLabel;
     private BatsGUI batsGUI;
     private CreatureGUI creatureGUI;
     private EscapeMenu escapeMenu;

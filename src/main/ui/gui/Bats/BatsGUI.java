@@ -40,8 +40,8 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
     private Creature creature;
     private Cave cave;
     private MyFrame myFrame;
-    private MouseEnterExitLabels mouseEnterExitLabels;
-    private MouseClickedLabels mouseClickedLabels;
+    private MouseBatEnterExitLabels mouseEnterExitLabels;
+    private MouseBatClickedLabels mouseClickedLabels;
     private List<Point> batPositions; 
     private List<JButton> batButtons;
 
@@ -132,13 +132,13 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
             if (creature.canAttack(cave)) {
                 creature.attack(cave);
                 batSpawnGUI(cave);
-                mouseClickedLabels = new MouseClickedLabels(creature, cave, 1);
+                mouseClickedLabels = new MouseBatClickedLabels(creature, cave, 1);
                 this.add(mouseClickedLabels);
             } else if (creature.isInRange(cave) == -1) {
-                mouseClickedLabels = new MouseClickedLabels(creature, cave, 2);
+                mouseClickedLabels = new MouseBatClickedLabels(creature, cave, 2);
                 this.add(mouseClickedLabels);
             } else if (creature.getAttackCooldown() == false) {
-                mouseClickedLabels = new MouseClickedLabels(creature, cave, 3);
+                mouseClickedLabels = new MouseBatClickedLabels(creature, cave, 3);
                 this.add(mouseClickedLabels);
             }
 
@@ -164,7 +164,7 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
     // MODIFIES: this.mouseEnterExitLabels.
     // EFFECTS: If a bat is in range when a mouse enters a bat, mouseEnterExitLabel's visibility is set to true.
     public void mouseEntered(MouseEvent e) {
-        mouseEnterExitLabels = new MouseEnterExitLabels(creature, cave);
+        mouseEnterExitLabels = new MouseBatEnterExitLabels(creature, cave);
         if (creature.isInRange(cave) != -1) {
             sourceObject = e.getSource();
             this.add(mouseEnterExitLabels);
@@ -181,7 +181,6 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
         if (mouseEnterExitLabels.isVisible()) {
             this.remove(mouseEnterExitLabels);
             repaint();
-            System.out.println("mouseExited");
         }
 
     }

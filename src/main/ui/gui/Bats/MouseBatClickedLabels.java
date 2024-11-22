@@ -11,7 +11,7 @@ import model.characters.Creature;
 import model.rooms.Cave;
 
 
-public class MouseClickedLabels extends JLabel{
+public class MouseBatClickedLabels extends JLabel{
 
     private int condition;
     private String text;
@@ -19,8 +19,8 @@ public class MouseClickedLabels extends JLabel{
     private Creature creature;
     private Cave cave;
     
-    
-    public MouseClickedLabels(Creature creature, Cave cave, int condition) {
+    // EFFECTS: Creates the text that appears when the user clicks a bat
+    public MouseBatClickedLabels(Creature creature, Cave cave, int condition) {
         this.creature = creature;
         this.cave = cave;
         this.condition = condition;
@@ -33,27 +33,6 @@ public class MouseClickedLabels extends JLabel{
         this.setVerticalAlignment(JLabel.TOP);
         this.setOpaque(false);
     }
-
-    // @Override
-    // // MODIFIES: this
-    // // EFFECTS: Creates a text that pops out with its shadow effect.
-    // protected void paintComponent(Graphics g) {
-    //     super.paintComponent(g);
-    //     Graphics2D g2d = (Graphics2D) g;
-
-    //     g2d.setColor(Color.BLUE);
-    //     g2d.setFont(new Font("Arial", Font.BOLD, 15));
-
-    //     textCondition(condition);
-
-    //     int textWidth = g2d.getFontMetrics().stringWidth(text);
-    //     int textHeight = g2d.getFontMetrics().getHeight();
-
-    //     int x = (this.getWidth() - textWidth) / 2 + 2;
-    //     int y = (this.getHeight() + textHeight) / 2 - 2;
-    //     g2d.drawString(text, x, y);
-
-    // }
 
 
     // MODIFIES: this.text

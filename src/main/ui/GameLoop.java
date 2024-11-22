@@ -6,7 +6,7 @@ import java.util.Scanner;
 import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
-import ui.gui.Bats.MouseEnterExitLabels;
+import ui.gui.Bats.MouseBatEnterExitLabels;
 import ui.gui.EscapeMenu.EscapeMenu;
 import ui.gui.StartUpScreen.StartUpScreen;
 
@@ -72,12 +72,12 @@ public class GameLoop {
             case "m":
                 printMoveMenu(creature, cave);
                 break;
-            case "i":
-                creature.getInventory().setInventoryOpen();
-                while (creature.getInventory().getInventoryOpen()) {
-                    creature.getInventory().displayInventory(creature, cave);
-                }
-                break;
+            // case "i":
+            //     creature.getInventory().setInventoryOpen();
+            //     while (creature.getInventory().getInventoryOpen()) {
+            //         creature.getInventory().displayInventory(creature, cave);
+            //     }
+            //     break;
             case "e":
                 System.out.println("\nGame has ended!");
                 gs.endGame(creature, cave);

@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.*;
+import java.awt.Image;
 
 import model.characters.Creature;
 import model.items.Batwings;
@@ -14,9 +15,13 @@ import ui.Constants;
 
 public class InventoryGUI extends JPanel {
     
-    private ImageIcon inventoryImage;
-    private ImageIcon batwingImage;
+    private ImageIcon inventoryIcon;
+
     private JButton itemButton;
+
+    private ImageIcon batwingIcon;
+    private Image batwingScaledImage;
+    public static final int ITEM_SLOT_SIDE_LENGTH = 85;
     
     // Effects: intanstializes an inventory
     public InventoryGUI() {
@@ -25,8 +30,10 @@ public class InventoryGUI extends JPanel {
         this.setOpaque(true);
         this.setVisible(false);
 
-        inventoryImage = new ImageIcon("src\\main\\ui\\inventory\\InventoryImage.png");
-        batwingImage = new ImageIcon("src\\main\\ui\\inventory\\BatwingImage.png");
+        inventoryIcon = new ImageIcon("src\\main\\ui\\inventory\\InventoryImage.png");
+        batwingIcon = new ImageIcon("src\\main\\ui\\inventory\\BatwingImage.png");
+        batwingScaledImage = batwingIcon.getImage().getScaledInstance(ITEM_SLOT_SIDE_LENGTH, ITEM_SLOT_SIDE_LENGTH, Image.SCALE_SMOOTH);
+
     }
 
 
@@ -46,8 +53,8 @@ public class InventoryGUI extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
-        g2D.drawImage(inventoryImage.getImage(), 0, 0, null);
-        g2D.drawImage(batwingImage.getImage(), 405, 215, null);
+        g2D.drawImage(inventoryIcon.getImage(), 0, 0, null);
+        g2D.drawImage(batwingIcon.getImage(), 410, 215, null);
     }
 
 
