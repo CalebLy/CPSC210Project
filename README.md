@@ -22,9 +22,13 @@ creative adaptation of *Frankenstein*
 
 # Instructions for End User
 - You can add an X (batwing) to a Y (inventory) by killing bats to harvest their batwings
-- You can generate the first required action related to the user story "adding multiple Xs to a Y" by...
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by...
-- You can locate my visual component by...
-- You can save the state of my application by...
-- You can reload the state of my application by...
+- You can interact with batwings by pressing I.
+    - Right click the batwing to try and drop it.
+    - Left click the batwing to try and use it.
+    - Hover over the batwing to see a description of it. 
+- You can locate my visual component everywhere.
+- You can save the state of my application by pressing escape and clicking Save Game.
+- You can end the game, after or without saving, by pressing escape and clicking End Game
+- You can reload the state of my application by pressing Load Game at the start.
+- You can start a fresh version of the game by pressing New Game at the start.
 
