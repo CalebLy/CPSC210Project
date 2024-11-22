@@ -20,7 +20,7 @@ public class InventoryGUI extends JPanel {
         this.setLayout(null);
         this.setOpaque(true);
         this.setVisible(false);
-        inventoryIcon = new ImageIcon("src\\main\\ui\\inventory\\InventoryImage.png");
+        inventoryIcon = new ImageIcon("src\\main\\ui\\gui\\inventory\\InventoryImage.png");
     }
 
 

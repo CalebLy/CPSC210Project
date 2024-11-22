@@ -36,7 +36,7 @@ public class BatwingsGUI extends JPanel implements MouseListener {
         this.inventory = creature.getInventory();
         this.creature = creature;
         this.cave = cave;
-        batwingIcon = new ImageIcon("src\\main\\ui\\inventory\\BatwingImage.png");
+        batwingIcon = new ImageIcon("src\\main\\ui\\gui\\inventory\\items\\BatwingImage.png");
         Image batwingIconImage = batwingIcon.getImage();
         batwingScaledImage = batwingIconImage.getScaledInstance(ITEM_SLOT_SIDE, ITEM_SLOT_SIDE, Image.SCALE_SMOOTH);
 

@@ -86,9 +86,11 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
     public void batSpawnGUI(Cave cave) {
         this.cave = cave;
         for (JButton button: batButtons) {
-            if (sourceObject == null && !sourceObject.equals(button)) {
+            if (sourceObject == null) {
                 this.remove(button);
-            } 
+            } else if (!sourceObject.equals(button)) {
+                this.remove(button);
+            }
         }
         
 
