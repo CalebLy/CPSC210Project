@@ -1,4 +1,4 @@
-package ui.gui.Cave;
+package ui.gui.cave;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

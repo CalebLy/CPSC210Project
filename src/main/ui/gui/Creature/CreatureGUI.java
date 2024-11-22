@@ -1,6 +1,5 @@
-package ui.gui.Creature;
+package ui.gui.creature;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -46,17 +45,6 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
         currentCreatureOrientation = creatureFrontIcon.getImage();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-    }
-
-    @Override   
-    // Effects: Invoked when a key is typed. Uses KeyChar, char output
-    public void keyTyped(KeyEvent e) {
-
-    }
-
     // Effects: Invoked when a physical key is pressed down (Method call sent from Frame).
     //          Uses KeyCode, int output. Moves and updates the creature's position 
     public void moveCreatureGUI(KeyEvent e) {
@@ -82,13 +70,6 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
     }
 
     @Override
-    // Effects: Called whenever a button is released.
-    public void keyReleased(KeyEvent e) {
-        // System.out.println("You released key char: " + e.getKeyChar());
-        // System.out.println("You released key code: " + e.getKeyCode());
-    }
-
-    @Override
     // Effects: Draws the creature
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -97,7 +78,21 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
     }
 
     @Override
+    public void actionPerformed(ActionEvent e) {
+    }
+
+    @Override   
+    // Effects: Invoked when a key is typed. Uses KeyChar, char output
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    @Override
     public void keyPressed(KeyEvent e) {
     }
+
     
 }

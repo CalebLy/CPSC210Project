@@ -1,24 +1,15 @@
-package ui.inventory;
-
-import java.util.Scanner;
+package ui.gui.inventory;
 
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.*;
-import java.awt.Image;
 
-import model.characters.Creature;
-import model.items.Batwings;
-import model.rooms.Cave;
 import ui.Constants;
-import ui.inventory.items.BatwingsGUI;
 
 public class InventoryGUI extends JPanel {
     
     private ImageIcon inventoryIcon;
-    private BatwingsGUI batwingsGUI;
-    
+
 
 
     public static final int ITEM_SLOT_SIDE_LENGTH = 85;

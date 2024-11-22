@@ -1,9 +1,11 @@
-package ui.gui.StartUpScreen;
-import javax.swing.*;
+package ui.gui.startupscreen;
+
+
 
 import model.GameState;
 import ui.Constants;
 
+import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.*;
@@ -64,8 +66,6 @@ public class StartUpScreen extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 
     @Override

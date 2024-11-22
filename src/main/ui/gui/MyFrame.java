@@ -1,21 +1,19 @@
-package ui;
+package ui.gui;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
-import javax.swing.Timer;
 
-import model.GameState;
 import model.characters.Creature;
 import model.rooms.Cave;
-import ui.gui.Bats.BatsGUI;
-import ui.gui.Bats.MouseBatEnterExitLabels;
-import ui.gui.Cave.CaveGUI;
-import ui.gui.Creature.CreatureGUI;
-import ui.gui.EscapeMenu.EscapeMenu;
-import ui.gui.StartUpScreen.StartUpScreen;
-import ui.inventory.InventoryGUI;
-import ui.inventory.items.BatwingsGUI;
+import ui.Constants;
+import ui.gui.bats.BatsGUI;
+import ui.gui.cave.CaveGUI;
+import ui.gui.creature.CreatureGUI;
+import ui.gui.escapemenu.EscapeMenu;
+import ui.gui.inventory.InventoryGUI;
+import ui.gui.inventory.items.BatwingsGUI;
+import ui.gui.startupscreen.StartUpScreen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -30,7 +28,6 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
 
     private JLayeredPane layeredPane;
     private StartUpScreen startUpScreen;
-    private MouseBatEnterExitLabels inTheRangeOfBatLabel;
     private BatsGUI batsGUI;
     private CreatureGUI creatureGUI;
 
@@ -49,7 +46,7 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
         // Frame Properties
         this.setTitle("Frankenstein Adaptation");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(new BorderLayout(10,5 ));
+        this.setLayout(new BorderLayout(10,5));
         this.setResizable(false);
         this.setSize(Constants.screenWidth, Constants.screenHeight);
         this.setVisible(true);
@@ -153,12 +150,12 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
                 creatureGUI.moveCreatureGUI(e);
                 break;
             case KeyEvent.VK_ESCAPE:
-                if (!inventoryVisible){
+                if (!inventoryVisible) {
                     toggleMenu();
                 }
                 break;
             case KeyEvent.VK_I:
-                if (!menuVisible){
+                if (!menuVisible) {
                     toggleInventory();
                 }
                 break;

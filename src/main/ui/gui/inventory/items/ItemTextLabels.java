@@ -1,4 +1,4 @@
-package ui.inventory.items;
+package ui.gui.inventory.items;
 
 import model.characters.Creature;
 import model.rooms.Cave;
@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 
 public class ItemTextLabels extends JLabel {
 
-    private int condition;
     private String text;
 
     private Creature creature;
@@ -30,8 +29,7 @@ public class ItemTextLabels extends JLabel {
     public ItemTextLabels(Creature creature, Cave cave, int condition) {
         this.creature = creature;
         this.cave = cave;
-        this.condition = condition;
-
+   
         textCondition(condition);
 
         this.setBounds(leftX, topY, width, height);
@@ -44,7 +42,7 @@ public class ItemTextLabels extends JLabel {
     }
 
 
-
+    @SuppressWarnings("methodlength")
     // MODIFIES: this.text
     // EFFECTS: Changes this.text based on which item is being hovered
     public void textCondition(int condition) {

@@ -1,6 +1,4 @@
-package ui.inventory.items;
-
-import java.util.Scanner;
+package ui.gui.inventory.items;
 
 import javax.swing.*;
 import java.awt.Graphics;
@@ -9,7 +7,6 @@ import java.awt.event.*;
 import java.awt.Image;
 
 import model.characters.Creature;
-import model.items.Batwings;
 import model.items.Inventory;
 import model.rooms.Cave;
 import ui.Constants;
@@ -23,7 +20,7 @@ public class BatwingsGUI extends JPanel implements MouseListener {
     private Image batwingScaledImage;
     private ItemTextLabels itemTextLabelsClickCondition;
     private ItemTextLabels itemTextLabelsHoverCondition;
-    public static final int ITEM_SLOT_SIDE_LENGTH = 85;
+    public static final int ITEM_SLOT_SIDE = 85;
 
     private Inventory inventory;
     private Creature creature;
@@ -40,7 +37,8 @@ public class BatwingsGUI extends JPanel implements MouseListener {
         this.creature = creature;
         this.cave = cave;
         batwingIcon = new ImageIcon("src\\main\\ui\\inventory\\BatwingImage.png");
-        batwingScaledImage = batwingIcon.getImage().getScaledInstance(ITEM_SLOT_SIDE_LENGTH, ITEM_SLOT_SIDE_LENGTH, Image.SCALE_SMOOTH);
+        Image batwingIconImage = batwingIcon.getImage();
+        batwingScaledImage = batwingIconImage.getScaledInstance(ITEM_SLOT_SIDE, ITEM_SLOT_SIDE, Image.SCALE_SMOOTH);
 
         itemButton = new JButton();
         gameButtonInitialization(itemButton, 410, 215, 85, 85);

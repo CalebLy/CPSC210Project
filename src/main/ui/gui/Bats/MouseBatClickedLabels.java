@@ -1,29 +1,24 @@
-package ui.gui.Bats;
+package ui.gui.bats;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-
 import javax.swing.JLabel;
 
 import model.characters.Creature;
-import model.rooms.Cave;
 
 
-public class MouseBatClickedLabels extends JLabel{
 
-    private int condition;
+public class MouseBatClickedLabels extends JLabel {
+
+
     private String text;
 
     private Creature creature;
-    private Cave cave;
     
     // EFFECTS: Creates the text that appears when the user clicks a bat
-    public MouseBatClickedLabels(Creature creature, Cave cave, int condition) {
+    public MouseBatClickedLabels(Creature creature, int condition) {
         this.creature = creature;
-        this.cave = cave;
-        this.condition = condition;
+
         this.setBounds(creature.getPosX(), creature.getPosY(), 300, 80);
         textCondition(condition);
         this.setText(text);

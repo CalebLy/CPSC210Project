@@ -1,4 +1,4 @@
-package ui.gui.Bats;
+package ui.gui.bats;
 
 import javax.swing.*;
 

@@ -1,11 +1,10 @@
-package ui.gui.Bats;
+package ui.gui.bats;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -21,7 +20,6 @@ import javax.swing.JButton;
 
 import model.rooms.Cave;
 import ui.Constants;
-import ui.MyFrame;
 import model.characters.Bats;
 import model.characters.Creature;
 
@@ -39,7 +37,6 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
 
     private Creature creature;
     private Cave cave;
-    private MyFrame myFrame;
     private MouseBatEnterExitLabels mouseEnterExitLabels;
     private MouseBatClickedLabels mouseClickedLabels;
     private List<Point> batPositions; 
@@ -89,11 +86,11 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
     public void batSpawnGUI(Cave cave) {
         this.cave = cave;
         for (JButton button: batButtons) {
-            if (sourceObject != null && sourceObject.equals(button)) {
-            } else {
+            if (sourceObject == null && !sourceObject.equals(button)) {
                 this.remove(button);
-            }
+            } 
         }
+        
 
         batPositions.clear();
         for (Bats bat : cave.getBats()) {
@@ -120,9 +117,11 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
 
 
     @Override
+    @SuppressWarnings("methodlength")
     // MODIFIES: this, Creature, Cave, Bats.
-    // EFFECTS: On mouse click, either attacks a bat that the user clicks, or doesn't. mouseClickedLabel is set to visible with text
-    //          set according to whether the hit succeeded, and why. Prevents spamming left click.
+    // EFFECTS: On mouse click, either attacks a bat that the user clicks, or doesn't. 
+    //          mouseClickedLabel is set to visible with text set according to whether 
+    //          the hit succeeded, and why. Prevents spamming left click.
     public void mouseClicked(MouseEvent e) {
 
         long currentTime = System.currentTimeMillis();
@@ -132,13 +131,13 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
             if (creature.canAttack(cave)) {
                 creature.attack(cave);
                 batSpawnGUI(cave);
-                mouseClickedLabels = new MouseBatClickedLabels(creature, cave, 1);
+                mouseClickedLabels = new MouseBatClickedLabels(creature, 1);
                 this.add(mouseClickedLabels);
             } else if (creature.isInRange(cave) == -1) {
-                mouseClickedLabels = new MouseBatClickedLabels(creature, cave, 2);
+                mouseClickedLabels = new MouseBatClickedLabels(creature, 2);
                 this.add(mouseClickedLabels);
             } else if (creature.getAttackCooldown() == false) {
-                mouseClickedLabels = new MouseBatClickedLabels(creature, cave, 3);
+                mouseClickedLabels = new MouseBatClickedLabels(creature, 3);
                 this.add(mouseClickedLabels);
             }
 
@@ -203,6 +202,7 @@ public class BatsGUI extends JPanel implements MouseListener, MouseMotionListene
     @Override
     public void mousePressed(MouseEvent e) {
     }
+
     @Override
     public void mouseReleased(MouseEvent e) {
     }

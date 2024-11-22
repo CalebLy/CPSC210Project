@@ -1,29 +1,25 @@
-package ui.gui.EscapeMenu;
+package ui.gui.escapemenu;
 
 import javax.swing.*;
 
 import model.GameState;
 import ui.Constants;
 import ui.GameLoop;
-import ui.MyFrame;
+import ui.gui.MyFrame;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
-import java.io.IOException;  
+
 
 
 public class EscapeMenu extends JPanel implements ActionListener {
     
-
     private ImageIcon escapeMenuImage;
     private JButton saveGameButton;
     private JButton endGameButton;
-    private MyFrame myFrame;
-    private GameState gs;
-    private GameLoop gameLoop;
-    private boolean menuVisible;
+
     private static final String JSON_STORE = "./data/gamestate.json";
 
     public EscapeMenu(GameState gs, GameLoop gameLoop, MyFrame myFrame) {
@@ -32,10 +28,6 @@ public class EscapeMenu extends JPanel implements ActionListener {
         this.setOpaque(true);
         this.setVisible(false);
 
-        this.myFrame = myFrame;
-        this.gs = gs;
-        this.gameLoop = gameLoop;
-
         escapeMenuImage = new ImageIcon("src\\main\\ui\\gui\\EscapeMenu\\EscapeMenu Image.png");
 
         saveGameButton = new JButton();
@@ -43,7 +35,6 @@ public class EscapeMenu extends JPanel implements ActionListener {
         gameButtonInitialization(saveGameButton, 380, 263, 580, 105);
         gameButtonInitialization(endGameButton, 380, 380, 580, 105);
 
-        
         saveGameButton.addActionListener(e -> {
             try {
                 gs.saveGame(gs.getCreature(), gs.getCave());

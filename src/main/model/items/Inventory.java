@@ -1,9 +1,5 @@
 package model.items;
 
-import java.util.Scanner;
-
-import model.characters.Creature;
-import model.rooms.Cave;
 
 public class Inventory {
     protected Batwings batwings;
