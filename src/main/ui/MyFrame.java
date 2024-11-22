@@ -14,6 +14,8 @@ import ui.gui.Cave.CaveGUI;
 import ui.gui.Creature.CreatureGUI;
 import ui.gui.EscapeMenu.EscapeMenu;
 import ui.gui.StartUpScreen.StartUpScreen;
+import ui.inventory.InventoryGUI;
+import ui.inventory.items.BatwingsGUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -31,8 +33,13 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
     private MouseBatEnterExitLabels inTheRangeOfBatLabel;
     private BatsGUI batsGUI;
     private CreatureGUI creatureGUI;
+
     private EscapeMenu escapeMenu;
     private boolean menuVisible;
+
+    private InventoryGUI inventoryGUI;
+    private BatwingsGUI batwingsGUI;
+    private boolean inventoryVisible;
 
 
 
@@ -104,19 +111,36 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
     }
 
     // MODIFIES: this.layeredPane.
-    // EFFECTS: Adds escapeMenu to the screen
+    // EFFECTS: Adds escapeMenu to the layeredPane
     public void escapeMenuSetUp(EscapeMenu escapeMenu) {
         this.escapeMenu = escapeMenu;
         layeredPane.add(escapeMenu, Integer.valueOf(3));
     }
 
-    // MODIFIES: this
+    // MODIFIES: this.
     // EFFECTS: Toggles escapeMenu's visibility.
-    // Toggle menu visibility
     private void toggleMenu() {
         menuVisible = !menuVisible; 
         escapeMenu.setVisible(menuVisible);
     }
+
+    // MODIFIES: this.layeredPane.
+    // EFFECTS: Adds inventory to the layeredPane
+    public void inventorySetUp(InventoryGUI inventoryGUI, Creature creature, Cave cave) {
+        this.inventoryGUI = inventoryGUI;
+        this.batwingsGUI = new BatwingsGUI(creature, cave);
+        layeredPane.add(inventoryGUI, Integer.valueOf(3));
+        layeredPane.add(batwingsGUI, Integer.valueOf(4));
+    }
+
+    // MODIFIES: this.
+    // EFFECTS: Toggles Inventory's visibility.
+    public void toggleInventory() {
+        inventoryVisible = !inventoryVisible;
+        inventoryGUI.setVisible(inventoryVisible);
+        batwingsGUI.setVisible(inventoryVisible);
+    }
+
 
     // EFFECTS: Keylistener that can toggle the escapeMenu or move the creature.
     @Override
@@ -128,9 +152,16 @@ public class MyFrame extends JFrame implements ActionListener, KeyListener {
             case KeyEvent.VK_DOWN:
                 creatureGUI.moveCreatureGUI(e);
                 break;
-
             case KeyEvent.VK_ESCAPE:
-                toggleMenu();
+                if (!inventoryVisible){
+                    toggleMenu();
+                }
+                break;
+            case KeyEvent.VK_I:
+                if (!menuVisible){
+                    toggleInventory();
+                }
+                break;
         }
     }
 

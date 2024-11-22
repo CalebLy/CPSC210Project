@@ -54,7 +54,6 @@ public class EscapeMenu extends JPanel implements ActionListener {
 
         endGameButton.addActionListener(e -> {
             gs.endGame(gs.getCreature(), gs.getCave());
-            gameLoop.setGameIsRunning(false);
             myFrame.dispose();
             System.exit(0);
         });

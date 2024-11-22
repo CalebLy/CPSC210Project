@@ -42,8 +42,8 @@ public class BatwingsGUI extends JPanel implements MouseListener {
         batwingIcon = new ImageIcon("src\\main\\ui\\inventory\\BatwingImage.png");
         batwingScaledImage = batwingIcon.getImage().getScaledInstance(ITEM_SLOT_SIDE_LENGTH, ITEM_SLOT_SIDE_LENGTH, Image.SCALE_SMOOTH);
 
-
-
+        itemButton = new JButton();
+        gameButtonInitialization(itemButton, 410, 215, 85, 85);
     }
 
 

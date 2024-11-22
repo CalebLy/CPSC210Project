@@ -18,10 +18,11 @@ public class ItemTextLabels extends JLabel {
     private Creature creature;
     private Cave cave;
 
-    private int positionX;
-    private int positionY;
+    private int leftX;
+    private int topY;
     private int width;
     private int height;
+    private int textSize;
 
 
     
@@ -30,14 +31,15 @@ public class ItemTextLabels extends JLabel {
         this.creature = creature;
         this.cave = cave;
         this.condition = condition;
+
         textCondition(condition);
 
-        this.setBounds(positionX, positionY, width, height);
+        this.setBounds(leftX, topY, width, height);
         this.setText(text);
-        this.setFont(new Font("Arial", Font.BOLD, 15));
+        this.setFont(new Font("Arial", Font.BOLD, textSize));
         this.setForeground(Color.BLACK);
-        this.setHorizontalAlignment(JLabel.CENTER);
-        this.setVerticalAlignment(JLabel.TOP);
+        this.setHorizontalAlignment(JLabel.LEFT);
+        this.setVerticalAlignment(JLabel.BOTTOM);
         this.setOpaque(false);
     }
 
@@ -51,7 +53,7 @@ public class ItemTextLabels extends JLabel {
             case 1:
                 this.text = ("<html>The witch indicates that she's unsure how many bat wings she may need."
                            + "<br>She recommends to get 10 or more.<br> Use a batwing for a special effect!"
-                           + " Batwings: " + creature.getInventory().getBatwings().getAmount() + "</html>");
+                           + "<br>Batwings: " + creature.getInventory().getBatwings().getAmount() + "</html>");
                 setBoundsDescriptionBox();
                 break;
             // Batwing Use. Case: Success
@@ -70,7 +72,7 @@ public class ItemTextLabels extends JLabel {
                 break;
             // Batwing Drop. Case: Success
             case 4:
-                this.text = ("<html>A Batwing has been dropped! Batwings left: " 
+                this.text = ("<html>A Batwing has been dropped! <br>Batwings left: " 
                             + creature.getInventory().getBatwings().getAmount() + "</html>");
                 setBoundsPopUpBox();
                 break;
@@ -83,17 +85,19 @@ public class ItemTextLabels extends JLabel {
 
     // Setter methods.
     private void setBoundsDescriptionBox() {
-        positionX = 387;
-        positionY = 455;
+        leftX = 387;
+        topY = 450;
         width = 598;
         height = 162;
+        textSize = 25;
     }
 
     private void setBoundsPopUpBox() {
-        positionX = 655;
-        positionY = 60;
+        leftX = 654;
+        topY = 62;
         width = 390;
         height = 120;
+        textSize = 17;
     }
     
 }

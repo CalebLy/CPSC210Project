@@ -111,15 +111,6 @@ public class Creature extends GameObject {
         new Thread(() -> {
 
             while (cave.getIsActive() && abilityToAttack == true) {
-
-                // while(!attackCooldown) {
-                //     try {
-                //         Thread.sleep(100); 
-                //     } catch (InterruptedException e) {
-                //         Thread.currentThread().interrupt(); 
-                //     }
-                // }
-
                 try {
                     Thread.sleep(this.attackCooldownTime);
                     attackCooldown = true;

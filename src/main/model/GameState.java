@@ -36,20 +36,17 @@ public class GameState {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         GameLoop gameLoop = new GameLoop();
-        gameLoop.setGameIsRunning(true);
         boolean startUp;
 
         do {
             startUp = gameLoop.initialStartUp(this);
         } while (!startUp);
 
-
         creature.startAttackCooldown(creature.getAttackCooldownTime(), cave);
         cave.spawnBats(cave.getMaxBats(), cave.getBatSpawnRate());
 
-        while (gameLoop.getGameIsRunning()) {
-            gameLoop.defaultLoopOptions(creature, cave, this);
-        }
+        gameLoop.defaultLoopOptions(creature, cave, this);
+        
     }
 
     // Effects: Stops all threads/loops. Used to prepare to end the game.
