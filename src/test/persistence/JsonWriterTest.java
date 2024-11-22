@@ -20,7 +20,7 @@ class JsonWriterTest {
     @Test
     void testWriterInvalidFile() {
         try {
-            GameState gs = new GameState();
+            new GameState();
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
@@ -72,8 +72,7 @@ class JsonWriterTest {
             writer.write(gs);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testReaderGeneralGameState.json");
-            // gs = reader.read();
+            new JsonReader("./data/testReaderGeneralGameState.json");
             assertEquals(0, gs.getCreature().getPosX());
             assertEquals(6, gs.getCreature().getPosY());
             assertEquals(768, gs.getCave().getHeight());

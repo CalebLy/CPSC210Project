@@ -3,10 +3,7 @@ package ui.gui.creature;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -15,7 +12,7 @@ import model.characters.Creature;
 import model.rooms.Cave;
 import ui.Constants;
 
-public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
+public class CreatureGUI extends JPanel {
 
     private Creature creature;
     private Cave cave;
@@ -32,7 +29,6 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
         this.speed = 10;
         this.setBounds(0, 0, Constants.screenWidth, Constants.screenHeight);
         this.setFocusable(true);
-        this.addKeyListener(this);
         this.setOpaque(false);
         this.setLayout(null);
 
@@ -76,23 +72,5 @@ public class CreatureGUI extends JPanel implements KeyListener, ActionListener {
         Graphics2D g2D = (Graphics2D) g;
         g2D.drawImage(currentCreatureOrientation, creature.getPosX(), creature.getPosY(), null);
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    }
-
-    @Override   
-    // Effects: Invoked when a key is typed. Uses KeyChar, char output
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
     
 }
