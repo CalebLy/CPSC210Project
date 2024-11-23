@@ -7,6 +7,8 @@ import java.io.IOException;
 import org.json.JSONObject;
 
 import model.characters.*;
+import model.eventlogger.Event;
+import model.eventlogger.EventLog;
 import model.rooms.*;
 import ui.GameLoop;
 import persistence.JsonReader;
@@ -53,6 +55,9 @@ public class GameState {
     public void endGame(Creature creature, Cave cave) {
         creature.setAbilityToAttack(false);
         cave.stopSpawningBats();
+        for (Event event : EventLog.getInstance()) {
+            System.out.println("\n" + event.toString());
+        }
     }
 
 

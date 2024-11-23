@@ -2,6 +2,8 @@ package model.items;
 
 import model.GameObject;
 import model.characters.Creature;
+import model.eventlogger.Event;
+import model.eventlogger.EventLog;
 import model.rooms.Cave;
 
 public class Batwings extends GameObject {
@@ -31,7 +33,7 @@ public class Batwings extends GameObject {
     public boolean useBatwing(Creature creature, Cave cave) {
         if (amount > 0) {
             if (creature.getAttackCooldownTime() > 0) {
-                creature.setAttackCooldownTime(500);
+                creature.setAttackCooldownTime(creature.getAttackCooldownTime() - 500);
             }
             cave.stopSpawningBats();
             if (cave.getBatSpawnRate() > 0) {
@@ -40,7 +42,8 @@ public class Batwings extends GameObject {
                 cave.spawnBats(cave.getMaxBats() + 1, cave.getBatSpawnRate());
             }  
             
-            this.removeObject();
+            EventLog.getInstance().logEvent(new Event("A Batwing has been used"));
+            amount--;
             return true;
         } else {
             return false;
@@ -53,7 +56,9 @@ public class Batwings extends GameObject {
 
     public void removeObject() {
         this.amount--;
+        EventLog.getInstance().logEvent(new Event("A Batwing has been dropped"));
     }
+
 
     // Getter methods
     public String getDescription() { 

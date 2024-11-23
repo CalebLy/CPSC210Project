@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import model.GameObject;
 import model.characters.Bats;
 import model.characters.Creature;
+import model.eventlogger.Event;
+import model.eventlogger.EventLog;
 
 // Referenced from the JsonSerialization Demo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
@@ -93,6 +95,7 @@ public class Cave extends GameObject {
     public void harvestBat(Creature creature, int batKilledIndex) {
         bats.remove(batKilledIndex);
         creature.getInventory().getBatwings().addBatwing();
+        EventLog.getInstance().logEvent(new Event("A Bat has been harvested. Batwing added to inventory."));
     }
 
 

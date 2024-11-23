@@ -153,7 +153,7 @@ public class CreatureTest {
 
         creatureTest.setPosition(8,8);
         creatureTest.setAbilityToAttack(false);
-        creatureTest.setAttackCooldownTime(1000);
+        creatureTest.setAttackCooldownTime(creatureTest.getAttackCooldownTime() - 1000);
         creatureTest.startAttackCooldown(creatureTest.getAttackCooldownTime(), caveTest);  
 
         try {
@@ -171,7 +171,7 @@ public class CreatureTest {
         }
     
         creatureTest.setAbilityToAttack(false);
-        creatureTest.setAttackCooldownTime(-1000);
+        creatureTest.setAttackCooldownTime(creatureTest.getAttackCooldownTime() + 1000);
         creatureTest.startAttackCooldown(creatureTest.getAttackCooldownTime(), caveTest);  
         
         try {

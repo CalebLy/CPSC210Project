@@ -3,6 +3,8 @@ package model.eventlogger;
 import java.util.Calendar;
 import java.util.Date;
 
+// Referenced from the AlarmSystem project
+// https://github.students.cs.ubc.ca/CPSC210/AlarmSystem.git
 
 /**
  * Represents an alarm system event.
