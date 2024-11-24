@@ -32,3 +32,17 @@ creative adaptation of *Frankenstein*
 - You can reload the state of my application by pressing Load Game at the start.
 - You can start a fresh version of the game by pressing New Game at the start.
 
+# Phase 4: Task 2
+Sat Nov 23 16:24:55 PST 2024
+A Bat has been harvested. Batwing added to inventory.
+
+Sat Nov 23 16:25:02 PST 2024
+A Batwing has been used
+
+Sat Nov 23 16:25:03 PST 2024
+A Batwing has been dropped
+
+# Phase 4: Task 3
+1) All of the GUI's could implement a parent interface, similar to how a majority of the classes in the model package extend the abstract class "GameObject". 
+2) Perhaps, classes that originally extended JLabel could extend a parent class that extends JLabel, allowing for all original JLabel classes to inherit common methods. Same thing for classes that originally extended JPanel.
+3) These would be hard to make useful and well implemented due to the differences between each GUI class.
