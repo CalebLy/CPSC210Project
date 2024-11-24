@@ -14,9 +14,6 @@ public class ItemTextLabels extends JLabel {
 
     private String text;
 
-    private Creature creature;
-    private Cave cave;
-
     private int leftX;
     private int topY;
     private int width;
@@ -27,10 +24,8 @@ public class ItemTextLabels extends JLabel {
     
     // EFFECTS: Creates the text boxes when the user's mouse hovers over an item
     public ItemTextLabels(Creature creature, Cave cave, int condition) {
-        this.creature = creature;
-        this.cave = cave;
-   
-        textCondition(condition);
+           
+        textCondition(condition, creature, cave);
 
         this.setBounds(leftX, topY, width, height);
         this.setText(text);
@@ -45,7 +40,7 @@ public class ItemTextLabels extends JLabel {
     @SuppressWarnings("methodlength")
     // MODIFIES: this.text
     // EFFECTS: Changes this.text based on which item is being hovered
-    public void textCondition(int condition) {
+    public void textCondition(int condition, Creature creature, Cave cave) {
         switch (condition) {
             // Batwing Hover
             case 1:

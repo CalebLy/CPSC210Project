@@ -1,11 +1,10 @@
 package model.characters;
 
-import persistence.Writable;
 import org.json.JSONObject;
 
 import model.GameObject;
 
-public class Bats extends GameObject implements Writable {
+public class Bats extends GameObject {
 
 
     protected int maxBats;

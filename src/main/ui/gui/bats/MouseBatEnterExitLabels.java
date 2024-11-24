@@ -15,21 +15,16 @@ import java.awt.Point;
 public class MouseBatEnterExitLabels extends JLabel {
 
 
-    private Creature creature;
-    private Cave cave;
     private Point currentBatCoords;
 
     // EFFECTS: Creates the JLabel that appears when the creature is close to a bat.
     public MouseBatEnterExitLabels(Creature creature, Cave cave) {
-        this.creature = creature;
-        this.cave = cave;
         currentBatCoords = new Point(0,0);
-        batInRangeCoordinateGetter();
+        batInRangeCoordinateGetter(creature, cave);
         this.setBounds(currentBatCoords.x, currentBatCoords.y + 15, 500, 40);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.TOP);
         this.setOpaque(false);
-       
     }
 
     @Override
@@ -56,7 +51,7 @@ public class MouseBatEnterExitLabels extends JLabel {
 
     // MODIFIES: this.currentBatCoords
     // EFFECTS: Determines the coordinate of a bat that is in range. 
-    public void batInRangeCoordinateGetter() {
+    public void batInRangeCoordinateGetter(Creature creature, Cave cave) {
         int batIndex = creature.isInRange(cave);
         if (batIndex != (-1)) {
             Bats currentBat = cave.getBat(batIndex);

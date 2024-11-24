@@ -22,7 +22,6 @@ public class BatwingsGUI extends JPanel implements MouseListener {
     private ItemTextLabels itemTextLabelsHoverCondition;
     public static final int ITEM_SLOT_SIDE = 85;
 
-    private Inventory inventory;
     private Creature creature;
     private Cave cave;
 
@@ -33,7 +32,6 @@ public class BatwingsGUI extends JPanel implements MouseListener {
         this.setOpaque(false);
         this.setVisible(false);
 
-        this.inventory = creature.getInventory();
         this.creature = creature;
         this.cave = cave;
         batwingIcon = new ImageIcon("src\\main\\ui\\gui\\inventory\\items\\BatwingImage.png");
@@ -70,6 +68,8 @@ public class BatwingsGUI extends JPanel implements MouseListener {
     // MODIFIES: this.
     // EFFECTS: Determines if the user can use/drop a batwing. Creates the according textbox.
     public void mouseClicked(MouseEvent e) {
+
+        Inventory inventory = creature.getInventory();
         
         if (itemTextLabelsClickCondition != null) {
             this.remove(itemTextLabelsClickCondition);

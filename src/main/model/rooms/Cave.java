@@ -53,15 +53,6 @@ public class Cave extends GameObject {
         this.batSpawnRate = batSpawnRate;
         new Thread(() -> {
             while (isSpawningBats) { 
-
-                // while (bats.size() == maxBats) {
-                //     try {
-                //         Thread.sleep(100); 
-                //     } catch (InterruptedException e) {
-                //         Thread.currentThread().interrupt(); 
-                //     }
-                // }
-
                 try {
                     Thread.sleep(batSpawnRate);
                     spawnBat();

@@ -13,14 +13,11 @@ public class MouseBatClickedLabels extends JLabel {
 
     private String text;
 
-    private Creature creature;
     
     // EFFECTS: Creates the text that appears when the user clicks a bat
     public MouseBatClickedLabels(Creature creature, int condition) {
-        this.creature = creature;
-
         this.setBounds(creature.getPosX(), creature.getPosY(), 300, 80);
-        textCondition(condition);
+        textCondition(condition, creature);
         this.setText(text);
         this.setFont(new Font("Arial", Font.BOLD, 15));
         this.setForeground(Color.CYAN);
@@ -32,7 +29,7 @@ public class MouseBatClickedLabels extends JLabel {
 
     // MODIFIES: this.text
     // EFFECTS: Changes this.text based on the condition of the creatures Attack Status
-    public void textCondition(int condition) {
+    public void textCondition(int condition, Creature creature) {
         switch (condition) {
             // CANHIT
             case 1:

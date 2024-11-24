@@ -12,8 +12,6 @@ import ui.gui.startupscreen.StartUpScreen;
 public class GameLoop {
 
     MyFrame myFrame = new MyFrame();
-    EscapeMenu escapeMenu;
-    InventoryGUI inventoryGUI;
     
     // Effects: Loads previously played file, or a fresh file.
     public boolean initialStartUp(GameState gs) {
@@ -29,8 +27,8 @@ public class GameLoop {
     
     // Effects: controls what happens when the user tries to do any of the default options
     public void defaultLoopOptions(Creature creature, Cave cave, GameState gs) {
-        escapeMenu = new EscapeMenu(gs, this, myFrame);
-        inventoryGUI = new InventoryGUI();
+        EscapeMenu escapeMenu = new EscapeMenu(gs, this, myFrame);
+        InventoryGUI inventoryGUI = new InventoryGUI();
         myFrame.caveSetUp();
         myFrame.batsSetUp(creature, cave);
         myFrame.escapeMenuSetUp(escapeMenu);
